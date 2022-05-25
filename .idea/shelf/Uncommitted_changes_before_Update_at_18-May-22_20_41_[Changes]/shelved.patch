@@ -1,0 +1,80 @@
+Index: mainApp/views.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import cv2\r\nimport imutils\r\nfrom django.shortcuts import render\r\nfrom django.core.files.storage import FileSystemStorage\r\nimport os\r\nfrom tensorflow import keras\r\nimport numpy as np\r\n\r\n# load ml models.\r\n\r\nbiModel = keras.models.load_model((os.path.dirname(os.path.dirname(__file__))) +\r\n                                  r'\\mlModels\\bi_model.h5')\r\n\r\n\r\n# def Login(request):\r\n# return render(request, 'Login/login.html')\r\n\r\n\r\n# def Register(request):\r\n# return render(request, 'Register/register.html')\r\n\r\n\r\ndef user(request):\r\n    return render(request, 'user/index.html')\r\n\r\n\r\ndef Result(request):\r\n    print('*************this is the req:' + str(request))\r\n    print('*************this is the req:' + str(request.POST.dict()))\r\n    if request.method == 'GET':\r\n        return render(request, 'Result/result.html')\r\n\r\n    fileObj = request.FILES['imgPath']\r\n    fs = FileSystemStorage()\r\n    testImgPath = fs.save(fileObj.name, fileObj)\r\n    testImgPath = fs.url(testImgPath)\r\n    testimage = '.' + testImgPath\r\n    img = PreprocessData(testimage)\r\n    img = np.reshape(img, [1, 224, 224, 3])\r\n    img = np.array(img)\r\n    bi_prediction = biModel.predict(img)\r\n\r\n    context = {'testImgPath': testImgPath, 'bi_prediction': bi_prediction}\r\n    return render(request, 'Result/result.html', context)\r\n\r\n\r\ndef Home(request):\r\n    return render(request, 'Home/home.html')\r\n\r\n\r\ndef New(request):\r\n    return render(request, 'New-patiant/patiant.html')\r\n\r\n\r\ndef Search(request):\r\n    return render(request, 'Search/search.html')\r\n\r\n\r\ndef PreprocessData(ImagePath):\r\n    # str1 = ImagePath + '.JPG'\r\n    img = cv2.imread(str(ImagePath))\r\n    # cv2.imshow('x',img)\r\n    # cv2.waitKey(0)\r\n    img_resized = cv2.resize(img, (224, 224))\r\n    gray = cv2.cvtColor(img_resized, cv2.COLOR_RGB2GRAY)\r\n    gray = cv2.GaussianBlur(gray, (5, 5), 0)\r\n    thresh = cv2.threshold(gray, 45, 255, cv2.THRESH_BINARY)[1]\r\n    thresh = cv2.erode(thresh, None, iterations=2)\r\n    thresh = cv2.dilate(thresh, None, iterations=2)\r\n    outline = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)\r\n    outline = imutils.grab_contours(outline)\r\n    area = max(outline, key=cv2.contourArea)\r\n    max_left = tuple(area[area[:, :, 0].argmin()][0])\r\n    max_right = tuple(area[area[:, :, 0].argmax()][0])\r\n    max_top = tuple(area[area[:, :, 1].argmin()][0])\r\n    max_bottom = tuple(area[area[:, :, 1].argmax()][0])\r\n    ADD_PIXELS = 0\r\n    final_image = img_resized[max_top[1] - ADD_PIXELS:max_bottom[1] + ADD_PIXELS,\r\n                  max_left[0] - ADD_PIXELS:max_right[0] + ADD_PIXELS].copy()\r\n    final_image = cv2.resize(final_image, (224, 224))\r\n    return final_image\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/mainApp/views.py b/mainApp/views.py
+--- a/mainApp/views.py	(revision f4c8aa7302e284cabb92a4777913c98281323885)
++++ b/mainApp/views.py	(date 1652836990117)
+@@ -18,7 +18,7 @@
+ 
+ # def Register(request):
+ # return render(request, 'Register/register.html')
+-
++#mik
+ 
+ def user(request):
+     return render(request, 'user/index.html')
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"f285ea7a-e460-4dfd-9c55-c85d638b2e64\" name=\"Changes\" comment=\"without multi-classifier &amp; models\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Python Script\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"295IojTk2uSdfsTUp33uRQTCbOC\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;E:/django&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;\r\n  }\r\n}</component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"f285ea7a-e460-4dfd-9c55-c85d638b2e64\" name=\"Changes\" comment=\"\" />\r\n      <created>1652396696832</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1652396696832</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"first\">\r\n      <created>1652579037627</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1652579037627</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"first\">\r\n      <created>1652579454564</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1652579454564</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"first\">\r\n      <created>1652579502110</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1652579502110</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"initial state\">\r\n      <created>1652579570527</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1652579570527</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"without models &amp; api\">\r\n      <created>1652656888388</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1652656888388</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"without models &amp; api\">\r\n      <created>1652665912745</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1652665912745</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"without multi-classifier &amp; models\">\r\n      <created>1652834166496</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1652834166496</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"8\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.History.Properties\">\r\n    <option name=\"COLUMN_ID_ORDER\">\r\n      <list>\r\n        <option value=\"Default.Root\" />\r\n        <option value=\"Default.Author\" />\r\n        <option value=\"Default.Date\" />\r\n        <option value=\"Default.Subject\" />\r\n        <option value=\"Space.CommitStatus\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"first\" />\r\n    <MESSAGE value=\"initial state\" />\r\n    <MESSAGE value=\"without models &amp; api\" />\r\n    <MESSAGE value=\"without multi-classifier &amp; models\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"without multi-classifier &amp; models\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision f4c8aa7302e284cabb92a4777913c98281323885)
++++ b/.idea/workspace.xml	(date 1652899310116)
+@@ -3,6 +3,20 @@
+   <component name="ChangeListManager">
+     <list default="true" id="f285ea7a-e460-4dfd-9c55-c85d638b2e64" name="Changes" comment="without multi-classifier &amp; models">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/mainApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainApp/views.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/media/Image1.jpg" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/media/Image12.jpg" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/media/Image12_7auwwr7.jpg" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/media/No12.jpg" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/media/ff.jpg" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/media/no1006.jpg" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/media/no1006_uUiTLdz.jpg" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/media/y1001 (1).jpg" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/media/y1001 (1)1.jpg" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/media/y1001 (1)1_ndEjHX7.jpg" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/media/y1001 (1)_Ca0aigF.jpg" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/media/y1001 (1)_X98wcIE.jpg" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/media/y1007.jpg" beforeDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -94,7 +108,28 @@
+       <option name="project" value="LOCAL" />
+       <updated>1652834166496</updated>
+     </task>
+-    <option name="localTasksCounter" value="8" />
++    <task id="LOCAL-00008" summary="without multi-classifier &amp; models">
++      <created>1652836223223</created>
++      <option name="number" value="00008" />
++      <option name="presentableId" value="LOCAL-00008" />
++      <option name="project" value="LOCAL" />
++      <updated>1652836223223</updated>
++    </task>
++    <task id="LOCAL-00009" summary="without multi-classifier &amp; models">
++      <created>1652836874849</created>
++      <option name="number" value="00009" />
++      <option name="presentableId" value="LOCAL-00009" />
++      <option name="project" value="LOCAL" />
++      <updated>1652836874849</updated>
++    </task>
++    <task id="LOCAL-00010" summary="without multi-classifier &amp; models">
++      <created>1652836991693</created>
++      <option name="number" value="00010" />
++      <option name="presentableId" value="LOCAL-00010" />
++      <option name="project" value="LOCAL" />
++      <updated>1652836991694</updated>
++    </task>
++    <option name="localTasksCounter" value="11" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.History.Properties">

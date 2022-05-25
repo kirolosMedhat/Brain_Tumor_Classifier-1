@@ -1,0 +1,78 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'users/style.css' %}">
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	<title>DOCTOR - Responsive HTML &amp; Bootstrap Template</title>
+	{% load static %}
+    <link rel="stylesheet" href="{% static 'users/style.css' %}">
+	<link rel="stylesheet" href="{% static 'users/font-awesome.min.css'%}">
+	<link rel="stylesheet" href="{% static 'users/bootstrap.min.css'%}">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
+	
+
+</head>
+<body>
+
+	<div class="container" id="container">
+		<div class="form-container sign-up-container">
+			<form  enctype="multipart/form-data" method="POST">
+				{% csrf_token %}
+				<h1>Create Account</h1>
+				<input type="text" placeholder="Name" name="doctorname" required/>
+				<input type="password" placeholder="Password" name="password" required/>
+				<input type="re-password" placeholder="Re-Enter Password" name="confirm-password" required/>
+				<button  name="signup">Sign Up</button>
+			</form>
+		</div>
+	
+		<div class="form-container sign-in-container">
+			<form  method="post" enctype="multipart/form-data" action='/Home/' >
+				{% csrf_token%}
+				<h1>Sign in</h1>
+				<input type="number" min="2" placeholder="ID"  name="auth_name" required/>
+				<input type="password" placeholder="Password"  name="pswd" required/>
+
+				<button type="Submit" name="signin" >Sign In</button>
+			</form>
+		</div>
+
+		<div class="overlay-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-left">
+					<h1>Welcome Back!</h1>
+					<p>To keep connected with us please login with your personal info</p>
+					<button class="ghost" id="signIn">Sign In</button>
+				</div>
+				<div class="overlay-panel overlay-right">
+					<h1>Hello, Doctor!</h1>
+					<p>Enter your personal details and start journey with us</p>
+					<button class="ghost" id="signUp">Sign Up</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- script tags
+	============================================================= -->
+	<script>const signUpButton = document.getElementById('signUp');
+		const signInButton = document.getElementById('signIn');
+		const container = document.getElementById('container');
+
+
+		
+		signUpButton.addEventListener('click', () => {
+			container.classList.add("right-panel-active");
+		});
+		
+		signInButton.addEventListener('click', () => {
+			container.classList.remove("right-panel-active");
+		});
+    </script>
+</body>
+</html>
