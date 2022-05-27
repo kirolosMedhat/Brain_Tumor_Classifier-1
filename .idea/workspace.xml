@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f285ea7a-e460-4dfd-9c55-c85d638b2e64" name="Changes" comment="without multi-classifier &amp; models">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/videos/Carlos.mp4" beforeDir="false" />
-    </list>
+    <list default="true" id="f285ea7a-e460-4dfd-9c55-c85d638b2e64" name="Changes" comment="requirements file" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -109,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652918228079</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="requirements file">
+      <created>1653654512192</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1653654512192</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -139,6 +143,7 @@
     <MESSAGE value="initial state" />
     <MESSAGE value="without models &amp; api" />
     <MESSAGE value="without multi-classifier &amp; models" />
-    <option name="LAST_COMMIT_MESSAGE" value="without multi-classifier &amp; models" />
+    <MESSAGE value="requirements file" />
+    <option name="LAST_COMMIT_MESSAGE" value="requirements file" />
   </component>
 </project>
