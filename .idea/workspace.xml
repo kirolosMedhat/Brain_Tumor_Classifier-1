@@ -2,53 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f285ea7a-e460-4dfd-9c55-c85d638b2e64" name="Changes" comment="without multi-classifier &amp; models">
-      <change afterPath="$PROJECT_DIR$/core/static/Result/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/Home/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Home/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/Homejs/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Homejs/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/New-patiant/patiant.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/New-patiant/patiant.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/New-patiantjs/patiant.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/New-patiantjs/patiant.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/Result/result.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/Search/search.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Search/search.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/Searchjs/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Searchjs/search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/users/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/users/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/static/Home/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/core/static/Home/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/static/Homejs/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/static/Homejs/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/static/New-patiant/patiant.css" beforeDir="false" afterPath="$PROJECT_DIR$/core/static/New-patiant/patiant.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/static/New-patiantjs/patiant.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/static/New-patiantjs/patiant.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/static/Result/result.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/static/Search/search.css" beforeDir="false" afterPath="$PROJECT_DIR$/core/static/Search/search.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/static/Searchjs/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/static/Searchjs/search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/static/images/image01.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/static/users/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/core/static/users/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainApp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainApp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainApp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainApp/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainApp/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Image12.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Image12_7auwwr7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/No12.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/ff.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/no1006.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/no1006_uUiTLdz.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/y1001 (1).jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/y1001 (1)1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/y1001 (1)1_ndEjHX7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/y1001 (1)_Ca0aigF.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/y1001 (1)_X98wcIE.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/y1001.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/y1007.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mlModels.rar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Home/Carlos.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Home/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Home/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Login/base.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Login/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/New-patiant/patiant.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/New-patiant/patiant.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Register/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Register/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Result/result.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Result/result.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Search/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Search/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/videos/Carlos.mp4" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,14 +29,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "E:/BrainTumorClassifier",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/BrainTumorClassifier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
