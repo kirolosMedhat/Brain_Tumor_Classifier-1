@@ -1,14 +1,8 @@
-import cv2
-import imutils
 from django.shortcuts import render
 from django.core.files.storage import FileSystemStorage
-import os
-from tensorflow import keras
 import numpy as np
-import pyodbc
-from mainApp import Prediction
-from mainApp.models import insertnewpatient, insertdata, treatmentplan
-from django.db import models
+from mainApp import Driver
+
 
 
 def Login(request):
@@ -16,8 +10,7 @@ def Login(request):
     if request.method == "GET":
         return render(request, 'Login/index.html')
     # register before login
-    return Prediction.Register(request)
-
+    return Driver.Register(request)
 
 def Home(request):
     # load Home page
@@ -25,13 +18,11 @@ def Home(request):
         return render(request, 'Home/home.html')
     # register after wrong login
     if 'signup' in request.POST:
-        return Prediction.Register(request)
+        return Driver.Register(request)
     # login
     elif 'signin' in request.POST:
-        return Prediction.Login(request)
-
+        return Driver.Login(request)
     return render(request, 'Login/index.html')
-
 
 def user(request):
     return render(request, 'Login/index.html')
@@ -49,16 +40,15 @@ def Result(request):
     testImgPath = fs.url(testImgPath)
     testimagepath = '.' + testImgPath
     # insert new patient
-    Prediction.insertNewPatient(request, testimagepath)
+    Driver.insertNewPatient(request, testimagepath)
     # start preditions
-    bi_prediction = Prediction.biModelPrediction(testimagepath)
+    bi_prediction = Driver.biModelPrediction(testimagepath)
     # set default values
     multi_prediction = [0.00, 0.00, 0.00]
     multi_prediction_txt = "No tumor"
     if bi_prediction > 0.005:
-        multi_prediction = Prediction.multiModelPrediction(testimagepath)
-        multi_prediction_txt = Prediction.multiModelTranslate(multi_prediction)
-
+        multi_prediction = Driver.multiModelPrediction(testimagepath)
+        multi_prediction_txt = Driver.multiModelTranslate(multi_prediction)
     context = {'testImgPath': testImgPath,
                'bi_prediction': round(float(bi_prediction[0]) * 100, 3),
                'multi_prediction': multi_prediction[0],
@@ -79,6 +69,6 @@ def New(request):
 
 def Search(request):
     if request.method == 'GET':
-        return Prediction.Search(request)
+        return Driver.Search(request)
 
 
