@@ -1,13 +1,11 @@
 import cv2
 import imutils
 from django.shortcuts import render
-from django.core.files.storage import FileSystemStorage
 import os
-import tensorflow as tf
 from tensorflow import keras
 import numpy as np
 import pyodbc
-from mainApp.models import insertnewpatient,insertdata,treatmentplan
+from mainApp.models import insertnewpatient,insertdata
 
 
 sql_connection = pyodbc.connect('Driver={SQL Server};'

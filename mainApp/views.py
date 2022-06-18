@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from django.core.files.storage import FileSystemStorage
-import numpy as np
 from mainApp import Driver
-
 
 
 def Login(request):
@@ -11,6 +9,7 @@ def Login(request):
         return render(request, 'Login/index.html')
     # register before login
     return Driver.Register(request)
+
 
 def Home(request):
     # load Home page
@@ -23,6 +22,7 @@ def Home(request):
     elif 'signin' in request.POST:
         return Driver.Login(request)
     return render(request, 'Login/index.html')
+
 
 def user(request):
     return render(request, 'Login/index.html')
@@ -57,18 +57,9 @@ def Result(request):
     return render(request, 'Result/result.html', context)
 
 
-# skip for now
-def translate(predict, class_names):
-    index = np.argmax(predict)
-    return class_names[index]
-
-
 def New(request):
     return render(request, 'New-patiant/patiant.html')
 
 
 def Search(request):
-    if request.method == 'GET':
-        return Driver.Search(request)
-
-
+    return Driver.Search(request)
