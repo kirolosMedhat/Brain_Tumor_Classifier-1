@@ -7,6 +7,9 @@ import tensorflow as tf
 from tensorflow import keras
 import numpy as np
 import pyodbc
+from mainApp.models import insertnewpatient,insertdata,treatmentplan
+
+
 sql_connection = pyodbc.connect('Driver={SQL Server};'
                                 'Server=DESKTOP-8A7J2CA;'
                                 'Database=Brain_tumor;'
@@ -16,6 +19,90 @@ bi_model = keras.models.load_model((os.path.dirname(os.path.dirname(__file__))) 
 
 multi_model = keras.models.load_model((os.path.dirname(os.path.dirname(__file__))) +
                                       r'\mlModels\multi_model.h5')
+
+
+
+
+def Register(request):
+    request.POST.get('doctorname') and request.POST.get('password')
+    insertvalues = insertdata()
+    insertvalues.doctorname = request.POST.get('doctorname')
+    insertvalues.password = request.POST.get('password')
+    insertvalues.save
+    cursor = sql_connection.cursor()
+    try:
+        cursor.execute("insert into Doctor values ('" + insertvalues.doctorname + "','" + insertvalues.password + "')")
+    except:
+        print("*********************************************")
+    cursor.commit()
+    return render(request, 'Login/index.html')
+
+def Login(request):
+    cursor = sql_connection.cursor()
+    d = request.POST
+    for key, value in d.items():
+        c = "SELECT doctorID, password from Doctor where doctorID='" + request.POST.get(
+            "auth_name") + "'and password=" + "'" + request.POST.get("pswd") + "';"
+        print(c)
+        cursor.execute(c)
+        t = tuple(cursor.fetchall())
+        if t == ():
+            return render(request, 'Login/index.html')
+        else:
+            print('hello')
+            return render(request, "Home/home.html")
+
+
+def Search(request):
+    getvalue = insertnewpatient()
+    getvalue.pname = request.POST.get('pname')
+    getvalue.age = request.POST.get('age')
+    getvalue.gender = request.POST.get('gender')
+    getvalue.diabetic = request.POST.get('diabetic')
+    getvalue.bloodpressure = request.POST.get('bloodpressure')
+    getvalue.heartdiseases = request.POST.get('heartdiseases')
+    getvalue.surgery1 = request.POST.get('surgery1')
+    getvalue.surgery2 = request.POST.get('surgery2')
+    getvalue.surgery3 = request.POST.get('surgery3')
+    getvalue.prescriptions = request.POST.get('prescriptions')
+    getvalue.tumortype = request.POST.get('tumortype')
+
+    cursor = sql_connection.cursor()
+    result = cursor.execute(
+        "select PatientID, pname, age, gender, diabetic ,bloodpressure "
+        ",heartdiseases , surgery1 , surgery2 , surgery3, prescriptions, imgPath  from patient")
+    return render(request, 'Search/search.html', {"result": result})
+
+
+def insertNewPatient(request, testimagepath):
+    request.POST.get('pname') and request.POST.get('age') and request.POST.get('gender') and request.POST.get(
+        'diabetic') and request.POST.get('bloodpressure') and request.POST.get('heartdiseases') and request.POST.get(
+        'surgery1') and request.POST.get('surgery2') and request.POST.get('surgery3') and request.POST.get(
+        'prescriptions') and request.POST.get('imgPath') and request.POST.get('tumortype')
+    insertpatient = insertnewpatient()
+    insertpatient.pname = request.POST.get('pname')
+    insertpatient.age = request.POST.get('age')
+    insertpatient.gender = request.POST.get('gender')
+    insertpatient.diabetic = request.POST.get('diabetic')
+    insertpatient.bloodpressure = request.POST.get('bloodpressure')
+    insertpatient.heartdiseases = request.POST.get('heartdiseases')
+    insertpatient.surgery1 = request.POST.get('surgery1')
+    insertpatient.surgery2 = request.POST.get('surgery2')
+    insertpatient.surgery3 = request.POST.get('surgery3')
+    insertpatient.prescriptions = request.POST.get('prescriptions')
+    insertpatient.imgPath = testimagepath
+    insertpatient.tumortype = request.POST.get('tumortype')
+    insertpatient.save
+    cursor = sql_connection.cursor()
+    cursor.execute("insert into patient values ('" + insertpatient.pname + "','" + str(
+        insertpatient.age) + "','" + insertpatient.gender + "','" + insertpatient.diabetic + "','" + insertpatient.bloodpressure
+                   + "','" + insertpatient.bloodpressure + "','" + insertpatient.surgery1
+                   + "','" + insertpatient.surgery2 + "','" + insertpatient.surgery3 + "','" +
+                   insertpatient.prescriptions + "','" + testimagepath + "','" + insertpatient.tumortype + "')")
+
+    cursor.commit()
+
+
 def biModelPrediction(image_path):
     image =preprocessData(image_path)
     image = np.reshape(image, [1, 224, 224, 3])
