@@ -93,11 +93,11 @@ def insertNewPatient(request, testimagepath):
     insertpatient.tumortype = request.POST.get('tumortype')
     insertpatient.save
     cursor = sql_connection.cursor()
-    cursor.execute("insert into patient values ('" + insertpatient.pname + "','" + str(
+    cursor.execute("insert into patient(pname,age,gender,diabetic,bloodpressure,heartdiseases,surgery1,surgery2,surgery3,prescriptions,imgPath) values ('" + insertpatient.pname + "','" + str(
         insertpatient.age) + "','" + insertpatient.gender + "','" + insertpatient.diabetic + "','" + insertpatient.bloodpressure
                    + "','" + insertpatient.bloodpressure + "','" + insertpatient.surgery1
                    + "','" + insertpatient.surgery2 + "','" + insertpatient.surgery3 + "','" +
-                   insertpatient.prescriptions + "','" + testimagepath + "','" + insertpatient.tumortype + "')")
+                   insertpatient.prescriptions + "','" + testimagepath + "')")
 
     cursor.commit()
 

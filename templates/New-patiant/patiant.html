@@ -1,6 +1,5 @@
-
-  <!DOCTYPE html>
-  <html lang="en"> 
+ <!DOCTYPE html>
+  <html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +8,9 @@
     <title>DOCTOR - Responsive HTML &amp; Bootstrap Template</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'New-patiant/patiant.css' %}">
-    
+
     <link rel="stylesheet" href="{% static 'New-patiant/font-awesome.min.css' %}">
-    
+
     <link rel="stylesheet" href="{% static 'New-patiant/bootstrap.min.css'%}">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
@@ -32,7 +31,7 @@
       *
       *
       ****/
-      
+
       body {
         margin: 0;
         padding: 0;
@@ -51,9 +50,9 @@
         text-transform: uppercase;
         font-weight: bold;
       }
-      
+
       /*header area*/
-      
+
       .top-header {
         background: #fff !important;
         position: fixed;
@@ -121,9 +120,9 @@
         border-color: #fff;
         margin-top: 4px;
       }
-      
+
       /*slider area*/
-      
+
       .slider-row {
         margin: 0;
         padding: 0;
@@ -207,9 +206,9 @@
         margin-right: 0;
         margin-top: 50px;
       }
-      
+
       /*about area*/
-      
+
       .about h2 {
         font-size: 90px;
         color: #42b3e5;
@@ -297,9 +296,9 @@
       .single-about-detail:hover .pentagon-text h1 {
         color: #3a9dca;
       }
-      
+
       /*service area*/
-      
+
       .service {
         background: url(../img/pattern.jpg);
         background-repeat: repeat-y;
@@ -403,9 +402,9 @@
       .service-img img {
         position: absolute;
       }
-      
+
       /*team section*/
-      
+
       .team {
         padding-bottom: 60px;
       }
@@ -492,9 +491,9 @@
       .single-member:hover .arrow-bottom {
         background: #2a2a2a;
       }
-      
+
       /*contact section*/
-      
+
       .contact-caption {
         background: #3a9dca;
       }
@@ -586,9 +585,9 @@
       .contact-form {
         padding-right: 40px;
       }
-      
+
       /*gmap*/
-      
+
       #map {
         height: 830px;
       }
@@ -608,9 +607,9 @@
       .contact-caption {
         margin-top: 120px;
       }
-      
+
       /*footer*/
-      
+
       .footer-para {
         margin: 0;
         padding: 0;
@@ -634,9 +633,9 @@
       .carousel-inner {
         position: relative;
       }
-      
+
       /*======================css for carousel=========================*/
-      
+
       .carousel-fade .carousel-inner .item {
         opacity: 0;
         transition-property: opacity;
@@ -681,9 +680,9 @@
             transform: translate3d(0, 0, 0);
         }
       }
-      
+
       /* just for demo purpose */
-      
+
       html,
       body,
       .carousel,
@@ -691,14 +690,14 @@
       .carousel-inner .item {
         height: 100%;
       }
-      
+
       /******************************
       responsive area
       ********************************/
-      
-      
+
+
       /* md */
-      
+
       @media (min-width: 992px) and (max-width: 1199px) {
         .navbar-default .navbar-nav>li>a {
             font-size: 20px;
@@ -728,9 +727,9 @@
             font-size: 12px;
         }
       }
-      
+
       /* sm */
-      
+
       @media (min-width: 768px) and (max-width: 991px) {
         .navbar-default .navbar-nav>li>a {
             font-size: 16px;
@@ -766,9 +765,9 @@
             margin-top: 110px;
         }
       }
-      
+
       /* xs */
-      
+
       @media (min-width: 480px) and (max-width: 767px) {
         .header-logo img {
             margin-top: 20px;
@@ -813,9 +812,9 @@
             margin-top: 140px;
         }
       }
-      
+
       /* XS Portrait */
-      
+
       @media (max-width: 479px) {
         .top-header img.logo {
             margin: 20px 10px;
@@ -922,10 +921,10 @@
             font-size: 10px;
         }
       }
-      
-      
-      
-      
+
+
+
+
       .fill h1{
         margin-top: 200px;
         font-size: 90px;
@@ -945,9 +944,9 @@
       border: none;
       background: #f1f1f1;
       }
-      
-      
-      
+
+
+
       hr {
       border: 2px solid #add8e6;
       margin-bottom: 25px;
@@ -969,7 +968,7 @@
         font-size: 24px;
         color: #fff;
       }
-      
+
       #output{
         position: relative;
         width: 250px;
@@ -977,7 +976,7 @@
         border: 2px solid #FFF;
         background-size: cover;
       }
-      
+
       #save {
         background-color: #fff;
         border: none;
@@ -993,7 +992,7 @@
         border-radius: 8px;
         position: absolute;
       }
-      
+
       .surgery{
         margin-left: 450px ;
         margin-top: -120px;
@@ -1004,7 +1003,7 @@
   <form method="post" enctype="multipart/form-data" action="/Result/">
     {% csrf_token %}
   <body>
-    
+
     <!-- ====================================================
     header section -->
     <header class="top-header">
@@ -1014,7 +1013,7 @@
             <br>
             <a href="index.html"><img src="images/logo.png" alt="" class="img-responsive logo"></a>
           </div>
-  
+
           <div class="col-md-7">
             <nav class="navbar navbar-default">
               <div class="container-fluid nav-bar">
@@ -1027,10 +1026,10 @@
                     <span class="icon-bar"></span>
                   </button>
                 </div>
-  
+
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                  
+
                   <ul class="nav navbar-nav navbar-right">
                     <li><a class="menu active" href="/Home/" >Home</a></li>
                     <li><a class="menu" href="/New-Patiant/">Add New</a></li>
@@ -1044,126 +1043,129 @@
         </div>
       </div>
     </header> <!-- end of header area -->
-  
+
   <!--registeraaaaaaaaaaaaaaaaaaaaaaaaaaaation-->
   <div class="fill">
   <form>
     <div class="container">
     <center>  <h1>New Patient Registeration Form</h1> </center>
     <hr>
-    <label class="filltitle"> Name* </label> 
-  <input type="text"  placeholder= "UserName"  name="pname" size="15" required /> 
-  <label class="filltitle"> Age* </label> 
-  <input type="text"  placeholder="Age" name="age" size="15" required /> 
-  <label class="filltitle"> Tumor </label> 
-  <input type="text"  placeholder="Age" name="tumortype" size="15" required /> 
-  <label class="filltitle"> Gender </label> 
-  <input type="text"  placeholder="Age" name="gender" size="15" required /> 
+    <label class="filltitle"> Name* </label>
+  <input type="text"  placeholder= "UserName"  name="pname" size="15" required />
+  <label class="filltitle"> Age* </label>
+  <input type="number"  placeholder="Age" name="age" size="15" required />
+
+
   <!-- chronic diseasesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss-->
   <div>
-  <label class="filltitle"> 
+  <label class="filltitle">
   History Of Chronic Diseases(Diabetic):
-  </label> 
-  
+  </label>
+
   <select name="diabetic">
     <option   value="No">No </option>
     <option  value="Yes">yes</option>
   </select>
   </div>
-  
+
   <div>
-  <label class="filltitle"> 
+  <label class="filltitle">
   History Of Chronic Diseases(Blood Pressure):
-  </label> 
-    
+  </label>
+
   <select name="bloodpressure" >
     <option  value="No">No</option>
     <option   value="Yes">yes</option>
   </select>
   </div>
-  
+
   <div>
-  <label class="filltitle"> 
+  <label class="filltitle">
   History Of Chronic Diseases(Heart Diseases):
-  </label> 
-    
+  </label>
+
   <select name="bloodpressure">
     <option  value="No">No</option>
     <option  value="Yes">yes</option>
   </select>
   </div>
   <!--ENDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD-->
-  
+
   <!-- surgeryyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy-->
   <div class="surgery">
-  
+
   <div>
-  <label class="filltitle" > 
-  Surgery 1 : 
-  </label> 
-    
+  <label class="filltitle" >
+  Surgery 1 :
+  </label>
+
   <select name="surgery1" >
     <option value="No">No</option>
     <option  value="Yes">yes</option>
   </select>
   </div>
-    
+
   <div>
-  <label class="filltitle"> 
-  Surgery 2:	
-  </label> 
-      
+  <label class="filltitle">
+  Surgery 2:
+  </label>
+
   <select name="surgery2">
     <option  value="No">No</option>
     <option  value="Yes">yes</option>
   </select>
   </div>
-    
+
   <div>
-  <label class="filltitle"> 
+  <label class="filltitle">
   Surgery 3:
-  </label> 
-      
+  </label>
+
   <select name="surgery3">
   <option  value="No">No</option>
   <option  value="Yes">yes</option>
   </select>
   </div>
   </div>
-  
+
+
+
     <!--ENDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD-->
-  
-  <label class="filltitle"> 
+
+  <label class="filltitle">
   Gender :
   </label><br>
-  
+  <select name="gender">
+    <option  value="male">male</option>
+    <option  value="Female">Female</option>
+  </select>
   </div>
   <label class="filltitle">
   If there's any prescriptions, please note them down here (Type empty if there is none)*
   </label>
-  
+
   <textarea cols="80" rows="5" placeholder="Kindly Write Down....."  name=" prescriptions" value="address" required></textarea>
-  
+
   <label class="filltitle">
   Upload Your MRI Here:
   </label>
   <input type="file" accept="image/*" onchange="loadFile(event)" name="imgPath">
   <img id="output"/>
-  
-  <button  id="save">Save</button>
-  
+
+  <button  id="save" >Save</button>
+
   </div>
-  
+
   <!--------------------------------------------------end of fill---------------------------------------------------------------->
-  
-  
-  
+
+
+
     <!-- footer starts here -->
     <footer class="footer clearfix">
       <div class="container">
         <div class="row">
           <div class="col-xs-6 footer-para">
-            <p>&copy; All right reserved</p>
+            <p>&copy;Team four All right reserved</p>
           </div>
           <div class="col-xs-6 text-right">
             <a href=""><i class="fa fa-facebook"></i></a>
