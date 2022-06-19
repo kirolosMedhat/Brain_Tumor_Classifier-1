@@ -5,6 +5,7 @@ import os
 from tensorflow import keras
 import numpy as np
 import pyodbc
+import DeepImageSearch
 from mainApp.models import insertnewpatient,insertdata
 
 
@@ -119,7 +120,7 @@ def multiModelTranslate(multiModelPrediction):
     index = np.argmax(multiModelPrediction)
     return class_names[index]
 
-def similar_cases():
+def similar_cases(tumor_type,testimagepath):
     treatment_one = "No more Similar cases"
     treatment_two = "No more Similar cases"
     treatment_three = "No more Similar cases"
@@ -134,7 +135,9 @@ def similar_cases():
                }
 
     connection= sql_connection.cursor()
-    connection.execute("select paths from patient where tumortype =")
+    cases= connection.execute("select imgPath from patient where tumortype= '"+tumor_type+"';")
+    x = len(cases)
+
     return
 
 def preprocessData(ImagePath):

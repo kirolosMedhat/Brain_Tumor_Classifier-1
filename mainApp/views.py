@@ -32,7 +32,7 @@ def Result(request):
     # load result page
     if request.method == 'GET':
         return render(request, 'Result/result.html')
-    x = False  # not finished yet
+    flag = True  # not finished yet
     # saving img
     fileObj = request.FILES['imgPath']
     fs = FileSystemStorage()
@@ -52,7 +52,8 @@ def Result(request):
     context = {'testImgPath': testImgPath,
                'bi_prediction': round(float(bi_prediction[0]) * 100, 3),
                'multi_prediction': multi_prediction[0],
-               'multi_prediction_txt': multi_prediction_txt
+               'multi_prediction_txt': multi_prediction_txt,
+               'flag':flag
                }
     return render(request, 'Result/result.html', context)
 
