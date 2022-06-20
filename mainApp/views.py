@@ -39,8 +39,6 @@ def Result(request):
     testImgPath = fs.save(fileObj.name, fileObj)
     testImgPath = fs.url(testImgPath)
     testimagepath = '.' + testImgPath
-    # insert new patient
-    Driver.insertNewPatient(request, testimagepath)
     # start preditions
     bi_prediction = Driver.biModelPrediction(testimagepath)
     # set default values
@@ -49,6 +47,8 @@ def Result(request):
     if bi_prediction > 0.005:
         multi_prediction = Driver.multiModelPrediction(testimagepath)
         multi_prediction_txt = Driver.multiModelTranslate(multi_prediction)
+        # insert new patient
+    Driver.insertNewPatient(request, testimagepath,multi_prediction_txt)
     context = {'testImgPath': testImgPath,
                'bi_prediction': round(float(bi_prediction[0]) * 100, 3),
                'multi_prediction': multi_prediction[0],

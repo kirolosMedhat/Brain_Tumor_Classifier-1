@@ -6,8 +6,7 @@ from tensorflow import keras
 import numpy as np
 import pyodbc
 import DeepImageSearch
-from mainApp.models import insertnewpatient,insertdata
-
+from mainApp.models import insertnewpatient, insertdata
 
 sql_connection = pyodbc.connect('Driver={SQL Server};'
                                 'Server=DESKTOP-8A7J2CA;'
@@ -20,8 +19,6 @@ multi_model = keras.models.load_model((os.path.dirname(os.path.dirname(__file__)
                                       r'\mlModels\multi_model.h5')
 
 
-
-
 def Register(request):
     request.POST.get('doctorname') and request.POST.get('password')
     insertvalues = insertdata()
@@ -29,21 +26,18 @@ def Register(request):
     insertvalues.password = request.POST.get('password')
     insertvalues.save
     cursor = sql_connection.cursor()
-    try:
-        cursor.execute("insert into Doctor values ('" + insertvalues.doctorname + "','" + insertvalues.password + "')")
-    except:
-        print("*********************************************")
+    cursor.execute("insert into Doctor values ('" + insertvalues.doctorname + "','" + insertvalues.password + "')")
     cursor.commit()
     return render(request, 'Login/index.html')
+
 
 def Login(request):
     cursor = sql_connection.cursor()
     d = request.POST
     for key, value in d.items():
-        c = "SELECT doctorID, password from Doctor where doctorID='" + request.POST.get(
+        sql_command = "SELECT doctorID, password from Doctor where doctorID='" + request.POST.get(
             "auth_name") + "'and password=" + "'" + request.POST.get("pswd") + "';"
-        print(c)
-        cursor.execute(c)
+        cursor.execute(sql_command)
         t = tuple(cursor.fetchall())
         if t == ():
             return render(request, 'Login/index.html')
@@ -73,7 +67,7 @@ def Search(request):
     return render(request, 'Search/search.html', {"result": result})
 
 
-def insertNewPatient(request, testimagepath):
+def insertNewPatient(request, testimagepath, tumor_type):
     request.POST.get('pname') and request.POST.get('age') and request.POST.get('gender') and request.POST.get(
         'diabetic') and request.POST.get('bloodpressure') and request.POST.get('heartdiseases') and request.POST.get(
         'surgery1') and request.POST.get('surgery2') and request.POST.get('surgery3') and request.POST.get(
@@ -91,36 +85,39 @@ def insertNewPatient(request, testimagepath):
     insertpatient.prescriptions = request.POST.get('prescriptions')
     insertpatient.imgPath = testimagepath
     insertpatient.tumortype = request.POST.get('tumortype')
-    insertpatient.save
+    insertpatient.save()
     cursor = sql_connection.cursor()
-    cursor.execute("insert into patient(pname,age,gender,diabetic,bloodpressure,heartdiseases,surgery1,surgery2,surgery3,prescriptions,imgPath) values ('" + insertpatient.pname + "','" + str(
+    cursor.execute("insert into patient values ('" + insertpatient.pname + "','" + str(
         insertpatient.age) + "','" + insertpatient.gender + "','" + insertpatient.diabetic + "','" + insertpatient.bloodpressure
                    + "','" + insertpatient.bloodpressure + "','" + insertpatient.surgery1
                    + "','" + insertpatient.surgery2 + "','" + insertpatient.surgery3 + "','" +
-                   insertpatient.prescriptions + "','" + testimagepath + "')")
+                   insertpatient.prescriptions + "','" + testimagepath + "','" + tumor_type + "')")
 
     cursor.commit()
 
 
 def biModelPrediction(image_path):
-    image =preprocessData(image_path)
+    image = preprocessData(image_path)
     image = np.reshape(image, [1, 224, 224, 3])
     image = np.array(image)
     return bi_model.predict(image)
 
+
 def multiModelPrediction(image_path):
-    image =preprocessData(image_path)
+    image = preprocessData(image_path)
     image = np.reshape(image, [1, 224, 224, 3])
     image = np.array(image)
     multi_prediction = multi_model.predict(image)
     return multi_prediction.tolist()
+
 
 def multiModelTranslate(multiModelPrediction):
     class_names = ['glioma', 'meningioma', 'ptitutary']
     index = np.argmax(multiModelPrediction)
     return class_names[index]
 
-def similar_cases(tumor_type,testimagepath):
+
+def similar_cases(tumor_type, testimagepath):
     treatment_one = "No more Similar cases"
     treatment_two = "No more Similar cases"
     treatment_three = "No more Similar cases"
@@ -134,11 +131,12 @@ def similar_cases(tumor_type,testimagepath):
                'treatment_five': treatment_five,
                }
 
-    connection= sql_connection.cursor()
-    cases= connection.execute("select imgPath from patient where tumortype= '"+tumor_type+"';")
+    connection = sql_connection.cursor()
+    cases = connection.execute("select imgPath from patient where tumortype= '" + tumor_type + "';")
     x = len(cases)
 
     return
+
 
 def preprocessData(ImagePath):
     img = cv2.imread(str(ImagePath))
