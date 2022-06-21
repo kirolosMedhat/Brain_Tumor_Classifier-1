@@ -5,7 +5,7 @@ import os
 from tensorflow import keras
 import numpy as np
 import pyodbc
-import DeepImageSearch
+#from similar_search import Index,SearchImage
 from mainApp.models import insertnewpatient, insertdata
 
 sql_connection = pyodbc.connect('Driver={SQL Server};'
@@ -67,7 +67,7 @@ def Search(request):
     return render(request, 'Search/search.html', {"result": result})
 
 
-def insertNewPatient(request, testimagepath, tumor_type):
+def insertNewPatient(request, testimagepath,tumor_type):
     request.POST.get('pname') and request.POST.get('age') and request.POST.get('gender') and request.POST.get(
         'diabetic') and request.POST.get('bloodpressure') and request.POST.get('heartdiseases') and request.POST.get(
         'surgery1') and request.POST.get('surgery2') and request.POST.get('surgery3') and request.POST.get(
@@ -84,14 +84,15 @@ def insertNewPatient(request, testimagepath, tumor_type):
     insertpatient.surgery3 = request.POST.get('surgery3')
     insertpatient.prescriptions = request.POST.get('prescriptions')
     insertpatient.imgPath = testimagepath
-    insertpatient.tumortype = request.POST.get('tumortype')
     insertpatient.save()
     cursor = sql_connection.cursor()
-    cursor.execute("insert into patient values ('" + insertpatient.pname + "','" + str(
-        insertpatient.age) + "','" + insertpatient.gender + "','" + insertpatient.diabetic + "','" + insertpatient.bloodpressure
-                   + "','" + insertpatient.bloodpressure + "','" + insertpatient.surgery1
+    cursor.execute("insert into patient(pname,age,gender,diabetic,bloodpressure,heartdiseases,surgery1,surgery2,"
+                   "surgery3,prescriptions,imgPath,tumortype) values ('" + insertpatient.pname + "','" + str(insertpatient.age) + "',"
+                                                                                                               "'" +
+                   insertpatient.gender + "','" + insertpatient.diabetic + "','" + insertpatient.bloodpressure
+                   + "','" + insertpatient.heartdiseases + "','" + insertpatient.surgery1
                    + "','" + insertpatient.surgery2 + "','" + insertpatient.surgery3 + "','" +
-                   insertpatient.prescriptions + "','" + testimagepath + "','" + tumor_type + "')")
+                   insertpatient.prescriptions + "','" + testimagepath + "','"+tumor_type+"');")
 
     cursor.commit()
 
@@ -132,7 +133,9 @@ def similar_cases(tumor_type, testimagepath):
                }
 
     connection = sql_connection.cursor()
-    cases = connection.execute("select imgPath from patient where tumortype= '" + tumor_type + "';")
+    connection.execute("select imgPath from patient where tumortype= '" + tumor_type + "';")
+    cases = connection.fetchall()
+    #Index(cases).Start()
     x = len(cases)
 
     return
