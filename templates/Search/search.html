@@ -123,7 +123,7 @@
 				<div>Age:<input type="text" name="age" id="age" readonly> <br><br></div>
 				<div>Gender:<input type="text" name="Gender" id="Gender" readonly> <br><br></div>
 				<div>History:<input type="text" name="History" id="History" readonly> <br><br></div>
-				<div>Image:<img id="MRI" value="img" src="{%static 'images/drs.jpg' %}" width="250" height="250"></div>
+				<div>Image:<img id="MRI" value="img" src="src" width="250" height="250"></div>
 				</div> 
 
 
@@ -143,7 +143,9 @@
                     {
                         var val = document.getElementById('MRI').value;
                         src= this.cells[11].innerHTML;
+                         src = src.substring(1);
                         MRI.src=src;
+
 
                          //rIndex = this.rowIndex;
                          document.getElementById("PatientId").value = this.cells[0].innerHTML;
