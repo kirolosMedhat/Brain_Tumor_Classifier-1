@@ -32,29 +32,34 @@ def Result(request):
     # load result page
     if request.method == 'GET':
         return render(request, 'Result/result.html')
-    flag = True  # not finished yet
+
+    flag = False
+    context={'flag': flag}
     # saving img
     fileObj = request.FILES['imgPath']
     fs = FileSystemStorage()
     testImgPath = fs.save(fileObj.name, fileObj)
-    testImgPath = fs.url(testImgPath)
-    testimagepath = '.' + testImgPath
+    testImgPath = fs.url(testImgPath)  # for server use
+    testimagepath = '.' + testImgPath  # for pc
     # start preditions
     bi_prediction = Driver.biModelPrediction(testimagepath)
     # set default values
     multi_prediction = [0.00, 0.00, 0.00]
     multi_prediction_txt = "No tumor"
     if bi_prediction > 0.005:
+        flag = True  # not finished yet
         multi_prediction = Driver.multiModelPrediction(testimagepath)
         multi_prediction_txt = Driver.multiModelTranslate(multi_prediction)
+        context.update(Driver.similar_cases(multi_prediction_txt, testimagepath))
         # insert new patient
-    Driver.insertNewPatient(request, testimagepath,multi_prediction_txt)
-    context = {'testImgPath': testImgPath,
+    Driver.insertNewPatient(request, testimagepath, multi_prediction_txt)
+    context.update( {'testImgPath': testImgPath,
                'bi_prediction': round(float(bi_prediction[0]) * 100, 3),
                'multi_prediction': multi_prediction[0],
                'multi_prediction_txt': multi_prediction_txt,
-               'flag':flag
-               }
+               'flag': flag
+               })
+
     return render(request, 'Result/result.html', context)
 
 

@@ -1084,7 +1084,7 @@ h5{
 						<div class="w3-card-4" style="width:30%">
 						  <img src={{testImgPath}} alt="Patient" style="width:100%">
 						  <div class="w3-container">
-							<h4><b>ID:??</b></h4>
+							<h4><b>Patient MRI </b></h4>
 						  </div>
 						</div>
 						<br>
@@ -1115,7 +1115,7 @@ h5{
 			  <div class="row align-items-center">
 				  {% if flag %}
 
-				<div class="col-md-5 col-xxl-6"><img class="img-fluid" src="{% static 'images/image.jpeg' %}" alt="..." /></div>
+				<div class="col-md-5 col-xxl-6"><img class="img-fluid" src="{{similar_image.1}}" alt="..." /></div>
 				<div class="col-md-7 col-xxl-6 text-center text-md-start">
 
 				  <h3 id="title" ><b>Case one</b></h3>
@@ -1132,7 +1132,7 @@ h5{
 
 								<div class="container">
 								  <div class="row align-items-center">
-									<div class="col-md-5 col-xxl-6"><img class="img-fluid" src="{% static 'images/image.jpeg' %}" alt="..." /></div>
+									<div class="col-md-5 col-xxl-6"><img class="img-fluid" src="{{similar_image.2}}" alt="..." /></div>
 									<div class="col-md-7 col-xxl-6 text-center text-md-start">
 										<h3 id="title" ><b>Case two</b></h3>
 										<p id="numbering">{{treatment_two}}<br/> </p>
@@ -1148,7 +1148,7 @@ h5{
 
 													<div class="container">
 													  <div class="row align-items-center">
-														<div class="col-md-5 col-xxl-6"><img class="img-fluid" src="{% static 'images/image.jpeg' %}" alt="..." /></div>
+														<div class="col-md-5 col-xxl-6"><img class="img-fluid" src="{{similar_image.3}}" alt="..." /></div>
 														<div class="col-md-7 col-xxl-6 text-center text-md-start">
 															<h3 id="title" ><b>Case three</b></h3>
 															<p id="numbering">{{treatment_three}}.<br/> </p>
@@ -1165,7 +1165,7 @@ h5{
 
 													<div class="container">
 													  <div class="row align-items-center">
-														<div class="col-md-5 col-xxl-6"><img class="img-fluid" src="{% static 'images/image.jpeg' %}" alt="..." /></div>
+														<div class="col-md-5 col-xxl-6"><img class="img-fluid" src="{{similar_image.4}}" alt="..." /></div>
 														<div class="col-md-7 col-xxl-6 text-center text-md-start">
 															<h3 id="title" ><b>Case four</b></h3>
 															<p id="numbering">{{treatment_four}}.<br/> </p>
@@ -1182,7 +1182,7 @@ h5{
 
 													<div class="container">
 													  <div class="row align-items-center">
-														<div class="col-md-5 col-xxl-6"><img class="img-fluid" src="{% static 'images/image.jpeg' %}" alt="..." /></div>
+														<div class="col-md-5 col-xxl-6"><img class="img-fluid" src="{{similar_image.5}}" alt="..." /></div>
 														<div class="col-md-7 col-xxl-6 text-center text-md-start">
 															<h3 id="title" ><b>Case five</b></h3>
 															<p id="numbering">{{treatment_five}}.<br/> </p>
@@ -1191,11 +1191,14 @@ h5{
 													</div>
 													<br>
 			                                        <br>
+
+
+
 			{% else %}
 
 													<div class="container">
 													  <div class="row align-items-center">
-														<div class="col-md-5 col-xxl-6"><img class="img-fluid" src="{% static 'images/image.jpeg' %}" alt="..." /></div>
+														<div class="col-md-5 col-xxl-6"><img class="img-fluid" src="{% static 'images/drs' %}" alt="..." /></div>
 														<div class="col-md-7 col-xxl-6 text-center text-md-start">
 															<h3 id="title" ><b>No similar cases</b></h3>
 

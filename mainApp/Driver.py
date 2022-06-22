@@ -5,7 +5,7 @@ import os
 from tensorflow import keras
 import numpy as np
 import pyodbc
-#from similar_search import Index,SearchImage
+from mainApp.similar_search import Index,SearchImage
 from mainApp.models import insertnewpatient, insertdata
 
 sql_connection = pyodbc.connect('Driver={SQL Server};'
@@ -24,7 +24,7 @@ def Register(request):
     insertvalues = insertdata()
     insertvalues.doctorname = request.POST.get('doctorname')
     insertvalues.password = request.POST.get('password')
-    insertvalues.save
+    insertvalues.save()
     cursor = sql_connection.cursor()
     cursor.execute("insert into Doctor values ('" + insertvalues.doctorname + "','" + insertvalues.password + "')")
     cursor.commit()
@@ -125,20 +125,28 @@ def similar_cases(tumor_type, testimagepath):
     treatment_four = "No more Similar cases"
     treatment_five = "No more Similar cases"
 
+    connection = sql_connection.cursor()
+    connection.execute("select imgPath from patient where tumortype= '" + tumor_type + "';")
+    cases = connection.fetchall()
+    image_list = [testimagepath]
+    for row in cases:
+        image_list.append(row[0])
+
+    Index(image_list).Start()
+    result = SearchImage().get_similar_images(image_path=image_list[0],number_of_images=6)
+    image_list = []
+    for item in result:
+        image_list.append(result[item].lstrip("."))
+
+    print(result)
     context = {'treatment_one': treatment_one,
                'treatment_two': treatment_two,
                'treatment_three': treatment_three,
                'treatment_four': treatment_four,
                'treatment_five': treatment_five,
+               'similar_image': image_list
                }
-
-    connection = sql_connection.cursor()
-    connection.execute("select imgPath from patient where tumortype= '" + tumor_type + "';")
-    cases = connection.fetchall()
-    #Index(cases).Start()
-    x = len(cases)
-
-    return
+    return context
 
 
 def preprocessData(ImagePath):
