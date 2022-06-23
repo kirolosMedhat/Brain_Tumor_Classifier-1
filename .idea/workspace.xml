@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f285ea7a-e460-4dfd-9c55-c85d638b2e64" name="Changes" comment="search image">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainApp/Driver.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainApp/Driver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainApp/similar_search.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainApp/Ailib.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainApp/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="f285ea7a-e460-4dfd-9c55-c85d638b2e64" name="Changes" comment="Ailib" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -203,7 +197,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655928633559</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Ailib">
+      <created>1655944530777</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1655944530777</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -240,6 +241,7 @@
     <MESSAGE value="new patient" />
     <MESSAGE value="similat cases" />
     <MESSAGE value="search image" />
-    <option name="LAST_COMMIT_MESSAGE" value="search image" />
+    <MESSAGE value="Ailib" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ailib" />
   </component>
 </project>
