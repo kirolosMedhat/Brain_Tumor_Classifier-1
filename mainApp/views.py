@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.core.files.storage import FileSystemStorage
 from mainApp import Driver
+from mainApp.Ailib import Predictions
 
 
 def Login(request):
@@ -42,14 +43,14 @@ def Result(request):
     testImgPath = fs.url(testImgPath)  # for server use
     testimagepath = '.' + testImgPath  # for pc
     # start preditions
-    bi_prediction = Driver.biModelPrediction(testimagepath)
+    bi_prediction = Predictions.biModelPrediction(testimagepath)
     # set default values
     multi_prediction = [0.00, 0.00, 0.00]
     multi_prediction_txt = "No tumor"
     if bi_prediction > 0.005:
         flag = True  # not finished yet
-        multi_prediction = Driver.multiModelPrediction(testimagepath)
-        multi_prediction_txt = Driver.multiModelTranslate(multi_prediction)
+        multi_prediction = Predictions.multiModelPrediction(image_path=testimagepath)
+        multi_prediction_txt = Predictions.multiModelTranslate(multi_prediction)
         context.update(Driver.similar_cases(multi_prediction_txt, testimagepath))
         # insert new patient
     Driver.insertNewPatient(request, testimagepath, multi_prediction_txt)

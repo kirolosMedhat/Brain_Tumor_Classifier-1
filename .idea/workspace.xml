@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f285ea7a-e460-4dfd-9c55-c85d638b2e64" name="Changes" comment="similat cases">
+    <list default="true" id="f285ea7a-e460-4dfd-9c55-c85d638b2e64" name="Changes" comment="search image">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Result/result.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Result/result.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Search/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Search/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainApp/Driver.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainApp/Driver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainApp/similar_search.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainApp/Ailib.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainApp/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,14 +32,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/BrainTumorClassifier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "E:/multimedia",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -195,7 +196,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655867939954</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="search image">
+      <created>1655928633557</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1655928633559</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -231,6 +239,7 @@
     <MESSAGE value="team four" />
     <MESSAGE value="new patient" />
     <MESSAGE value="similat cases" />
-    <option name="LAST_COMMIT_MESSAGE" value="similat cases" />
+    <MESSAGE value="search image" />
+    <option name="LAST_COMMIT_MESSAGE" value="search image" />
   </component>
 </project>

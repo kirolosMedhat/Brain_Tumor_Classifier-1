@@ -1,24 +1,78 @@
+"""This module is specific to all machine learning tasks. """
 import os
+import imutils
+import cv2
 import pandas as pd
 from PIL import Image
 import numpy as np
 from annoy import AnnoyIndex
 from tensorflow import keras
 from keras.preprocessing import image
-from keras.applications.vgg16 import VGG16, preprocess_input
+from keras.applications.vgg16 import preprocess_input
 from keras.models import Model
 import tensorflow as tf
+
 tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
+
+# loading Machine learning models
+bi_model = keras.models.load_model((os.path.dirname(os.path.dirname(__file__))) +
+                                   r'\mlModels\bi_model.h5')
+multi_model = keras.models.load_model((os.path.dirname(os.path.dirname(__file__))) +
+                                      r'\mlModels\multi_model.h5')
 
 
 class config:
     image_data_with_features_pkl = os.path.join('meta-data-files/', 'image_data_features.pkl')
     image_features_vectors_ann = os.path.join('meta-data-files/', 'image_features_vectors.ann')
 
+
+class Predictions:
+    """This class is specific to predicting tumors."""
+
+    def preprocessData(ImagePath):
+        img = cv2.imread(str(ImagePath))
+
+        img_resized = cv2.resize(img, (224, 224))
+        gray = cv2.cvtColor(img_resized, cv2.COLOR_RGB2GRAY)
+        gray = cv2.GaussianBlur(gray, (5, 5), 0)
+        thresh = cv2.threshold(gray, 45, 255, cv2.THRESH_BINARY)[1]
+        thresh = cv2.erode(thresh, None, iterations=2)
+        thresh = cv2.dilate(thresh, None, iterations=2)
+        outline = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        outline = imutils.grab_contours(outline)
+        area = max(outline, key=cv2.contourArea)
+        max_left = tuple(area[area[:, :, 0].argmin()][0])
+        max_right = tuple(area[area[:, :, 0].argmax()][0])
+        max_top = tuple(area[area[:, :, 1].argmin()][0])
+        max_bottom = tuple(area[area[:, :, 1].argmax()][0])
+        ADD_PIXELS = 0
+        final_image = img_resized[max_top[1] - ADD_PIXELS:max_bottom[1] + ADD_PIXELS,
+                      max_left[0] - ADD_PIXELS:max_right[0] + ADD_PIXELS].copy()
+        final_image = cv2.resize(final_image, (224, 224))
+        return final_image
+
+    def biModelPrediction(image_path):
+        image = Predictions.preprocessData(image_path)
+        image = np.reshape(image, [1, 224, 224, 3])
+        image = np.array(image)
+        return bi_model.predict(image)
+
+    def multiModelPrediction(image_path):
+        image = Predictions.preprocessData(image_path)
+        image = np.reshape(image, [1, 224, 224, 3])
+        image = np.array(image)
+        multi_prediction = multi_model.predict(image)
+        return multi_prediction.tolist()
+
+    def multiModelTranslate(multiModelPrediction):
+        class_names = ['glioma', 'meningioma', 'ptitutary']
+        index = np.argmax(multiModelPrediction)
+        return class_names[index]
+
+
 class FeatureExtractor:
     def __init__(self):
-        base_model= keras.models.load_model((os.path.dirname(os.path.dirname(__file__))) +
-                                      r'\mlModels\multi_model.h5')
+        base_model = multi_model
         # Customize the model to return features from fully-connected layer
         self.model = Model(inputs=base_model.input, outputs=base_model.output)
 
@@ -78,8 +132,9 @@ class Index:
         t.save(config.image_features_vectors_ann)
 
     def Start(self):
-            data = self.start_feature_extraction()
-            self.start_indexing(data)
+        data = self.start_feature_extraction()
+        self.start_indexing(data)
+
 
 class SearchImage:
     def __init__(self):
