@@ -1,3 +1,4 @@
+"""This class is specific to database operations."""
 from django.shortcuts import render
 import pyodbc
 from mainApp.Ailib import Index,SearchImage
