@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f285ea7a-e460-4dfd-9c55-c85d638b2e64" name="Changes" comment="Ailib">
+    <list default="true" id="f285ea7a-e460-4dfd-9c55-c85d638b2e64" name="Changes" comment="smilar cases">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainApp/Driver.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainApp/Driver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainApp/Ailib.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainApp/Ailib.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainApp/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/meta-data-files/image_data_features.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/meta-data-files/image_data_features.pkl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/meta-data-files/image_features_vectors.ann" beforeDir="false" afterPath="$PROJECT_DIR$/meta-data-files/image_features_vectors.ann" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Result/result.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Result/result.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,7 +224,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655945087539</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="smilar cases">
+      <created>1656122777286</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1656122777286</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -263,24 +269,25 @@
     <MESSAGE value="similat cases" />
     <MESSAGE value="search image" />
     <MESSAGE value="Ailib" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ailib" />
+    <MESSAGE value="smilar cases" />
+    <option name="LAST_COMMIT_MESSAGE" value="smilar cases" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/mainApp/Ailib.py</url>
-          <line>72</line>
+          <line>52</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/mainApp/Ailib.py</url>
-          <line>106</line>
+          <line>86</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/mainApp/Ailib.py</url>
-          <line>138</line>
+          <line>118</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>

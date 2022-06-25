@@ -1,4 +1,5 @@
 from django.shortcuts import render
+import numpy as np
 from django.core.files.storage import FileSystemStorage
 from mainApp import Driver
 from mainApp.Ailib import Predictions
@@ -47,7 +48,7 @@ def Result(request):
     # set default values
     multi_prediction = [0.00, 0.00, 0.00]
     multi_prediction_txt = "No tumor"
-    if bi_prediction > 0.005:
+    if np.argmax(bi_prediction) == 1:
         flag = True  # not finished yet
         multi_prediction = Predictions.multiModelPrediction(image_path=testimagepath)
         multi_prediction_txt = Predictions.multiModelTranslate(multi_prediction)
@@ -55,7 +56,7 @@ def Result(request):
         # insert new patient
     Driver.insertNewPatient(request, testimagepath, multi_prediction_txt)
     context.update( {'testImgPath': testImgPath,
-               'bi_prediction': round(float(bi_prediction[0]) * 100, 3),
+               'bi_prediction': round(float(bi_prediction[0,1]) * 100, 3),
                'multi_prediction': multi_prediction[0],
                'multi_prediction_txt': multi_prediction_txt,
                'flag': flag
