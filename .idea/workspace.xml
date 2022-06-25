@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f285ea7a-e460-4dfd-9c55-c85d638b2e64" name="Changes" comment="smilar cases">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainApp/Ailib.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainApp/Ailib.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainApp/views.py" afterDir="false" />
+    <list default="true" id="f285ea7a-e460-4dfd-9c55-c85d638b2e64" name="Changes" comment="efficientnet binary model">
       <change beforePath="$PROJECT_DIR$/meta-data-files/image_data_features.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/meta-data-files/image_data_features.pkl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/meta-data-files/image_features_vectors.ann" beforeDir="false" afterPath="$PROJECT_DIR$/meta-data-files/image_features_vectors.ann" afterDir="false" />
     </list>
@@ -231,7 +228,21 @@
       <option name="project" value="LOCAL" />
       <updated>1656122777286</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="efficientnet binary model code">
+      <created>1656124679380</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1656124679380</updated>
+    </task>
+    <task id="LOCAL-00028" summary="efficientnet binary model">
+      <created>1656124705581</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1656124705581</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -270,7 +281,9 @@
     <MESSAGE value="search image" />
     <MESSAGE value="Ailib" />
     <MESSAGE value="smilar cases" />
-    <option name="LAST_COMMIT_MESSAGE" value="smilar cases" />
+    <MESSAGE value="efficientnet binary model code" />
+    <MESSAGE value="efficientnet binary model" />
+    <option name="LAST_COMMIT_MESSAGE" value="efficientnet binary model" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
