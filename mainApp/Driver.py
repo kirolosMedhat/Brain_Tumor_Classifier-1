@@ -93,7 +93,11 @@ def similar_cases(tumor_type, testimagepath):
     treatment_three = "No more Similar cases"
     treatment_four = "No more Similar cases"
     treatment_five = "No more Similar cases"
-
+    context = {'treatment_one': treatment_one,
+               'treatment_two': treatment_two,
+               'treatment_three': treatment_three,
+               'treatment_four': treatment_four,
+               'treatment_five': treatment_five}
 
     connection.execute("select imgPath from patient where tumortype= '" + tumor_type + "';")
     cases = connection.fetchall()
@@ -104,17 +108,13 @@ def similar_cases(tumor_type, testimagepath):
     Index(image_list).Start()
     result = SearchImage().get_similar_images(image_path=image_list[0],number_of_images=6)
     image_list = []
-    for item in result:
+    result.pop(0) # pop the test image from dic.
+    for item,key in zip(result,context):
+        context[key] =connection.execute( "select PatientID, age, gender, diabetic, bloodpressure, heartdiseases, prescriptions from patient Where imgPath = '"+result[item]+"'").fetchone()
         image_list.append(result[item].lstrip("."))
 
     print(result)
-    context = {'treatment_one': treatment_one,
-               'treatment_two': treatment_two,
-               'treatment_three': treatment_three,
-               'treatment_four': treatment_four,
-               'treatment_five': treatment_five,
-               'similar_image': image_list
-               }
+    context.update({'similar_image': image_list })# in result start count from 1
     return context
 
 

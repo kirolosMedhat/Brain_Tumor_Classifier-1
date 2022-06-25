@@ -1022,6 +1022,13 @@ h5{
     position: absolute;
     font-size: 30px;
 }
+#myTable{
+    font-size: 22px;
+    text-align: center;
+    margin-left: -170px;
+    color: white;
+    width: 100%;
+}
 </style>
 </head>
 <body>
@@ -1082,7 +1089,7 @@ h5{
 					<!----------------------------------------------------------------->
 					<div class="w3-container">
 						<div class="w3-card-4" style="width:30%">
-						  <img src={{testImgPath}} alt="Patient" style="width:100%">
+						  <img src={{testImgPath}} alt="Patient" style="width:100%" >
 						  <div class="w3-container">
 							<h4><b>Patient MRI </b></h4>
 						  </div>
@@ -1111,15 +1118,50 @@ h5{
 			<!--/.bg-holder-->
 	
 			<div class="container">
-				<h2>similar Cases Treatment plans </h2>
+				<h2>similar Cases</h2>
 			  <div class="row align-items-center">
 				  {% if flag %}
 
-				<div class="col-md-5 col-xxl-6"><img class="img-fluid" src="{{similar_image.1}}" alt="..." /></div>
+				<div class="col-md-5 col-xxl-6"><img class="img-fluid" src="{{similar_image.0}}" alt="..."  width="234" height="234"  /></div>
 				<div class="col-md-7 col-xxl-6 text-center text-md-start">
 
 				  <h3 id="title" ><b>Case one</b></h3>
-				  <p id="numbering">{{treatment_one}}.<br/> </p>
+				  <p id="numbering"><br/> </p>
+					<table id="myTable" style="width:100%">
+
+					<tr>
+					  <th>Id:</th>
+					  <td>{{treatment_one.0}}</td>
+					</tr>
+					<tr>
+					  <th>Age:</th>
+					  <td>{{treatment_one.1}}</td>
+					</tr>
+					<tr>
+					  <th>Gender:</th>
+					  <td>{{treatment_one.2}}</td>
+					</tr>
+					<tr>
+						<th>diabetic:</th>
+						<td>{{treatment_one.3}}</td>
+					</tr>
+					<tr>
+						<th>BloodPressure:</th>
+						<td>{{treatment_one.4}}</td>
+					</tr>
+					<tr>
+						<th>Heardesises:</th>
+						<td>{{treatment_one.5}}</td>
+					</tr>
+					<tr>
+						<th>prescription:</th>
+						<td>{{treatment_one.6}}</td>
+					</tr>
+					<tr>
+						<th>Treatment Plan:</th>
+						<td>{{treatment_one.7}}</td>
+					</tr>
+				  </table>
 				</div>
 			  </div>
 			</div>
@@ -1132,10 +1174,45 @@ h5{
 
 								<div class="container">
 								  <div class="row align-items-center">
-									<div class="col-md-5 col-xxl-6"><img class="img-fluid" src="{{similar_image.2}}" alt="..." /></div>
+									<div class="col-md-5 col-xxl-6"><img class="img-fluid" src="{{similar_image.1}}" alt="..." width="234" height="234" /></div>
 									<div class="col-md-7 col-xxl-6 text-center text-md-start">
 										<h3 id="title" ><b>Case two</b></h3>
-										<p id="numbering">{{treatment_two}}<br/> </p>
+										<p id="numbering"><br/> </p>
+																			<table id="myTable" style="width:100%">
+
+					<tr>
+					  <th>Id:</th>
+					  <td>{{treatment_two.0}}</td>
+					</tr>
+					<tr>
+					  <th>Age:</th>
+					  <td>{{treatment_two.1}}</td>
+					</tr>
+					<tr>
+					  <th>Gender:</th>
+					  <td>{{treatment_two.2}}</td>
+					</tr>
+					<tr>
+						<th>diabetic:</th>
+						<td>{{treatment_two.3}}</td>
+					</tr>
+					<tr>
+						<th>BloodPressure:</th>
+						<td>{{treatment_two.4}}</td>
+					</tr>
+					<tr>
+						<th>Heardesises:</th>
+						<td>{{treatment_two.5}}</td>
+					</tr>
+					<tr>
+						<th>prescription:</th>
+						<td>{{treatment_two.6}}</td>
+					</tr>
+					<tr>
+						<th>Treatment Plan:</th>
+						<td>{{treatment_two.7}}</td>
+					</tr>
+				  </table>
 									</div>
 								  </div>
 								</div>
@@ -1148,10 +1225,45 @@ h5{
 
 													<div class="container">
 													  <div class="row align-items-center">
-														<div class="col-md-5 col-xxl-6"><img class="img-fluid" src="{{similar_image.3}}" alt="..." /></div>
+														<div class="col-md-5 col-xxl-6"><img class="img-fluid" src="{{similar_image.2}}" alt="..."  width="234" height="234"/></div>
 														<div class="col-md-7 col-xxl-6 text-center text-md-start">
 															<h3 id="title" ><b>Case three</b></h3>
-															<p id="numbering">{{treatment_three}}.<br/> </p>
+															<p id="numbering"><br/> </p>
+															<table id="myTable" style="width:100%">
+
+					<tr>
+					  <th>Id:</th>
+					  <td>{{treatment_tree.0}}</td>
+					</tr>
+					<tr>
+					  <th>Age:</th>
+					  <td>{{treatment_three.1}}</td>
+					</tr>
+					<tr>
+					  <th>Gender:</th>
+					  <td>{{treatment_three.2}}</td>
+					</tr>
+					<tr>
+						<th>diabetic:</th>
+						<td>{{treatment_three.3}}</td>
+					</tr>
+					<tr>
+						<th>BloodPressure:</th>
+						<td>{{treatment_three.4}}</td>
+					</tr>
+					<tr>
+						<th>Heardesises:</th>
+						<td>{{treatment_three.5}}</td>
+					</tr>
+					<tr>
+						<th>prescription:</th>
+						<td>{{treatment_three.6}}</td>
+					</tr>
+					<tr>
+						<th>Treatment Plan:</th>
+						<td>{{treatment_three.7}}</td>
+					</tr>
+				  </table>
 														</div>
 													  </div>
 													</div>
@@ -1165,10 +1277,45 @@ h5{
 
 													<div class="container">
 													  <div class="row align-items-center">
-														<div class="col-md-5 col-xxl-6"><img class="img-fluid" src="{{similar_image.4}}" alt="..." /></div>
+														<div class="col-md-5 col-xxl-6"><img class="img-fluid" src="{{similar_image.3}}" alt="..."  width="234" height="234"/></div>
 														<div class="col-md-7 col-xxl-6 text-center text-md-start">
 															<h3 id="title" ><b>Case four</b></h3>
-															<p id="numbering">{{treatment_four}}.<br/> </p>
+															<p id="numbering"><br/> </p>
+															<table id="myTable" style="width:100%">
+
+					<tr>
+					  <th>Id:</th>
+					  <td>{{treatment_four.0}}</td>
+					</tr>
+					<tr>
+					  <th>Age:</th>
+					  <td>{{treatment_four.1}}</td>
+					</tr>
+					<tr>
+					  <th>Gender:</th>
+					  <td>{{treatment_four.2}}</td>
+					</tr>
+					<tr>
+						<th>diabetic:</th>
+						<td>{{treatment_four.3}}</td>
+					</tr>
+					<tr>
+						<th>BloodPressure:</th>
+						<td>{{treatment_four.4}}</td>
+					</tr>
+					<tr>
+						<th>Heardesises:</th>
+						<td>{{treatment_four.5}}</td>
+					</tr>
+					<tr>
+						<th>prescription:</th>
+						<td>{{treatment_four.6}}</td>
+					</tr>
+					<tr>
+						<th>Treatment Plan:</th>
+						<td>{{treatment_four.7}}</td>
+					</tr>
+				  </table>
 														</div>
 													  </div>
 													</div>
@@ -1182,10 +1329,45 @@ h5{
 
 													<div class="container">
 													  <div class="row align-items-center">
-														<div class="col-md-5 col-xxl-6"><img class="img-fluid" src="{{similar_image.5}}" alt="..." /></div>
+														<div class="col-md-5 col-xxl-6"><img class="img-fluid" src="{{similar_image.4}}" alt="..."  width="234" height="234" /></div>
 														<div class="col-md-7 col-xxl-6 text-center text-md-start">
 															<h3 id="title" ><b>Case five</b></h3>
-															<p id="numbering">{{treatment_five}}.<br/> </p>
+															<p id="numbering"><br/> </p>
+															<table id="myTable" style="width:100%">
+
+					<tr>
+					  <th>Id:</th>
+					  <td>{{treatment_five.0}}</td>
+					</tr>
+					<tr>
+					  <th>Age:</th>
+					  <td>{{treatment_five.1}}</td>
+					</tr>
+					<tr>
+					  <th>Gender:</th>
+					  <td>{{treatment_five.2}}</td>
+					</tr>
+					<tr>
+						<th>diabetic:</th>
+						<td>{{treatment_five.3}}</td>
+					</tr>
+					<tr>
+						<th>BloodPressure:</th>
+						<td>{{treatment_five.4}}</td>
+					</tr>
+					<tr>
+						<th>Heardesises:</th>
+						<td>{{treatment_five.5}}</td>
+					</tr>
+					<tr>
+						<th>prescription:</th>
+						<td>{{treatment_five.6}}</td>
+					</tr>
+					<tr>
+						<th>Treatment Plan:</th>
+						<td>{{treatment_five.7}}</td>
+					</tr>
+				  </table>
 														</div>
 													  </div>
 													</div>
@@ -1198,7 +1380,7 @@ h5{
 
 													<div class="container">
 													  <div class="row align-items-center">
-														<div class="col-md-5 col-xxl-6"><img class="img-fluid" src="{% static 'images/drs' %}" alt="..." /></div>
+														<div class="col-md-5 col-xxl-6"><img class="img-fluid" src="{% static 'images/image.jpg' %}" alt="..."  width="234" height="234"/></div>
 														<div class="col-md-7 col-xxl-6 text-center text-md-start">
 															<h3 id="title" ><b>No similar cases</b></h3>
 
