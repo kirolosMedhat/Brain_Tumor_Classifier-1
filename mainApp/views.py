@@ -26,10 +26,6 @@ def Home(request):
     return render(request, 'Login/index.html')
 
 
-def user(request):
-    return render(request, 'Login/index.html')
-
-
 def Result(request):
     # load result page
     if request.method == 'GET':

@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f285ea7a-e460-4dfd-9c55-c85d638b2e64" name="Changes" comment="efficientnet binary model">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainApp/Driver.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainApp/Driver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainApp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainApp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainApp/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/meta-data-files/image_data_features.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/meta-data-files/image_data_features.pkl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/meta-data-files/image_features_vectors.ann" beforeDir="false" afterPath="$PROJECT_DIR$/meta-data-files/image_features_vectors.ann" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Login/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Login/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656124705581</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="efficientnet binary model">
+      <created>1656124926877</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1656124926877</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">

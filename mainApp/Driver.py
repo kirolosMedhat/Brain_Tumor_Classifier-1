@@ -19,19 +19,20 @@ def Register(request):
     insertvalues.password = request.POST.get('password')
     insertvalues.save()
     connection.execute("insert into Doctor values ('" + insertvalues.doctorname + "','" + insertvalues.password + "')")
+    doctor_id = connection.execute("select doctorID from doctor where doctorID = (select MAX(doctorID)from doctor) ").fetchone()
     connection.commit()
-    return render(request, 'Login/index.html')
+    return render(request, 'Login/index.html',{'doctor_id':doctor_id,'id_alert':True})
 
 
 def Login(request):
-    d = request.POST
-    for key, value in d.items():
+    data = request.POST
+    for key, value in data.items():
         sql_command = "SELECT doctorID, password from Doctor where doctorID='" + request.POST.get(
             "auth_name") + "'and password=" + "'" + request.POST.get("pswd") + "';"
         connection.execute(sql_command)
-        t = tuple(connection.fetchall())
-        if t == ():
-            return render(request, 'Login/index.html')
+        result = tuple(connection.fetchall())
+        if result == ():
+            return render(request, 'Login/index.html',{'login_alert':True}) # login error alert will show up if true
         else:
             print('hello')
             return render(request, "Home/home.html")
