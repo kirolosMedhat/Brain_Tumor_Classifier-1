@@ -998,24 +998,24 @@
         margin-top: -120px;
         position: relative;
       }
-   .loading {
+   #loading {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(2);
-    margin-top: 686px;
-    margin-left: 15px;
+    margin-top: -48px;
+    margin-left: 730px;
  }
-  .loading svg polyline {
+  #loading svg polyline {
     fill: none;
     stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
   }
-  .loading svg polyline#back {
+  #loading svg polyline#back {
     stroke: #399ac5;
   }
-  .loading svg polyline#front {
+  #loading svg polyline#front {
     stroke: #ffffff;
     stroke-dasharray: 12, 36;
     stroke-dashoffset: 48;
@@ -1057,10 +1057,14 @@
   #detect{
     position: absolute;
     font-weight: bolder;
-    font-size: 16px;
+    font-size: 8px;
     color: #fff;
-    margin-left: 655px;
-    margin-top: -66px;
+    margin-left: -27px;
+    margin-top: -19px;
+  }
+
+  .saving{
+    position: absolute;
   }
 
     </style>
@@ -1116,9 +1120,9 @@
     <center>  <h1>New Patient Registeration Form</h1> </center>
     <hr>
     <label class="filltitle"> Name* </label>
-  <input type="text"  placeholder= "UserName"  name="pname" size="15" required />
+  <input id="name" type="text"  placeholder= "UserName"  name="pname" size="15" required />
   <label class="filltitle"> Age* </label>
-  <input type="number"  min="40" placeholder="Age" name="age" size="15" required />
+  <input id="age"  type="number"  min="40" placeholder="Age" name="age" size="15" required />
 
 
   <!-- chronic diseasesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss-->
@@ -1207,24 +1211,24 @@ Gender :
   If there's any prescriptions, please note them down here (Type empty if there is none)*
   </label>
 
-  <textarea cols="80" rows="5" placeholder="Kindly Write Down....."  name=" prescriptions" value="address" required></textarea>
+  <textarea id="prescriptions" cols="80" rows="5" placeholder="Kindly Write Down....."  name=" prescriptions" value="address" required></textarea>
 
   <label class="filltitle">
   Upload Your MRI Here:
   </label>
-  <input type="file" accept="image/*" onchange="loadFile(event)" name="imgPath" required>
+  <input id="img" type="file" accept="image/*" onchange="loadFile(event)" name="imgPath" required>
   <img id="output"/>
 
 <!-------------------------loading------------------------------>
-
-<div id="load" class="loading"  style="display:none;">
+<div id="load" class="saving" style="display:none;">
+<div id="loading">
     <svg width="16px" height="12px">
       <polyline id="back" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
       <polyline id="front" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
     </svg>
-
+    <p id="detect">Detecting...</p>
 </div>
-<p id="detect">Detecting...</p>
+</div>
 <!-------------------------------------------------------------->
 
 
@@ -1272,8 +1276,18 @@ Gender :
       }
     };
     function showDiv() {
-   document.getElementById('load').style.display = "block";
+    let age = document.getElementById('age').value;
+     let name = document.getElementById('name').value;
+      let prescriptions = document.getElementById('prescriptions').value;
+
+      if(document.getElementById('img').files.length == 0 ){
+
+      } else{
+          document.getElementById('load').style.display = "block";
+      }
+
 }
+
     </script>
   </body>
 </form>
