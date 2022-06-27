@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f285ea7a-e460-4dfd-9c55-c85d638b2e64" name="Changes" comment="last edit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/meta-data-files/image_data_features.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/meta-data-files/image_data_features.pkl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/meta-data-files/image_features_vectors.ann" beforeDir="false" afterPath="$PROJECT_DIR$/meta-data-files/image_features_vectors.ann" afterDir="false" />
@@ -280,7 +281,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656302891115</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="last edit">
+      <created>1656308363416</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1656308363416</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">

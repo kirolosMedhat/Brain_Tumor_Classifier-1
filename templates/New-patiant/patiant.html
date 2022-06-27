@@ -1280,10 +1280,11 @@ Gender :
      let name = document.getElementById('name').value;
       let prescriptions = document.getElementById('prescriptions').value;
 
-      if(document.getElementById('img').files.length == 0 ){
+      if(document.getElementById('img').files.length == 0 || name =='' || age == '' || prescriptions==''  ){
 
       } else{
           document.getElementById('load').style.display = "block";
+          loadfile;
       }
 
 }
