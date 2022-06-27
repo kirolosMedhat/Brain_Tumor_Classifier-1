@@ -998,6 +998,71 @@
         margin-top: -120px;
         position: relative;
       }
+   .loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(2);
+    margin-top: 686px;
+    margin-left: 15px;
+ }
+  .loading svg polyline {
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .loading svg polyline#back {
+    stroke: #399ac5;
+  }
+  .loading svg polyline#front {
+    stroke: #ffffff;
+    stroke-dasharray: 12, 36;
+    stroke-dashoffset: 48;
+    animation: dash 1s linear infinite;
+  }
+  @-moz-keyframes dash {
+    62.5% {
+      opacity: 0;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  @-webkit-keyframes dash {
+    62.5% {
+      opacity: 0;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  @-o-keyframes dash {
+    62.5% {
+      opacity: 0;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes dash {
+    62.5% {
+      opacity: 0;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  #detect{
+    position: absolute;
+    font-weight: bolder;
+    font-size: 16px;
+    color: #fff;
+    margin-left: 655px;
+    margin-top: -66px;
+  }
+
     </style>
   </head>
   <form method="post" enctype="multipart/form-data" action="/Result/">
@@ -1031,8 +1096,8 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                   <ul class="nav navbar-nav navbar-right">
-                    <li><a class="menu active" href="/Home/" >Home</a></li>
-                    <li><a class="menu" href="/New-Patiant/">Add New</a></li>
+                    <li><a class="menu " href="/Home/" >Home</a></li>
+                    <li><a class="menu active" href="/New-Patiant/">Add New</a></li>
                     <li><a class="menu" href="/Search/">Search </a></li>
                     <li><a class="menu" href="/">Log Out</a></li>
                   </ul>
@@ -1046,7 +1111,7 @@
 
   <!--registeraaaaaaaaaaaaaaaaaaaaaaaaaaaation-->
   <div class="fill">
-  <form>
+  <div>
     <div class="container">
     <center>  <h1>New Patient Registeration Form</h1> </center>
     <hr>
@@ -1128,17 +1193,15 @@
   </div>
   </div>
 
-
-
     <!--ENDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD-->
 
-  <label class="filltitle">
-  Gender :
-  </label><br>
-  <select name="gender">
-    <option  value="male">male</option>
-    <option  value="Female">Female</option>
-  </select>
+ <label class="filltitle">
+Gender :
+</label><br>
+<div class="filltitle">
+<input type="radio" value="Male" name="gender" checked > Male </input>
+<input type="radio" value="Female" name="gender" disabled> Female </input>
+</div>
   </div>
   <label class="filltitle">
   If there's any prescriptions, please note them down here (Type empty if there is none)*
@@ -1149,10 +1212,23 @@
   <label class="filltitle">
   Upload Your MRI Here:
   </label>
-  <input type="file" accept="image/*" onchange="loadFile(event)" name="imgPath">
+  <input type="file" accept="image/*" onchange="loadFile(event)" name="imgPath" required>
   <img id="output"/>
 
-  <button  id="save" >Save</button>
+<!-------------------------loading------------------------------>
+
+<div id="load" class="loading"  style="display:none;">
+    <svg width="16px" height="12px">
+      <polyline id="back" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
+      <polyline id="front" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
+    </svg>
+
+</div>
+<p id="detect">Detecting...</p>
+<!-------------------------------------------------------------->
+
+
+  <button  id="save" onclick="showDiv()" >Save</button>
 
   </div>
 
@@ -1195,6 +1271,9 @@
         URL.revokeObjectURL(output.src) // free memory
       }
     };
+    function showDiv() {
+   document.getElementById('load').style.display = "block";
+}
     </script>
   </body>
 </form>

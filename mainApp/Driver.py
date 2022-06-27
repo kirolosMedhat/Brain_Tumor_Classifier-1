@@ -39,23 +39,53 @@ def Login(request):
 
 
 def Search(request):
-    getvalue = insertnewpatient()
-    getvalue.pname = request.POST.get('pname')
-    getvalue.age = request.POST.get('age')
-    getvalue.gender = request.POST.get('gender')
-    getvalue.diabetic = request.POST.get('diabetic')
-    getvalue.bloodpressure = request.POST.get('bloodpressure')
-    getvalue.heartdiseases = request.POST.get('heartdiseases')
-    getvalue.surgery1 = request.POST.get('surgery1')
-    getvalue.surgery2 = request.POST.get('surgery2')
-    getvalue.surgery3 = request.POST.get('surgery3')
-    getvalue.prescriptions = request.POST.get('prescriptions')
-    getvalue.tumortype = request.POST.get('tumortype')
+    if request.method == "GET":
+        getvalue = insertnewpatient()
+        getvalue.pname = request.POST.get('pname')
+        getvalue.age = request.POST.get('age')
+        getvalue.gender = request.POST.get('gender')
+        getvalue.diabetic = request.POST.get('diabetic')
+        getvalue.bloodpressure = request.POST.get('bloodpressure')
+        getvalue.heartdiseases = request.POST.get('heartdiseases')
+        getvalue.surgery1 = request.POST.get('surgery1')
+        getvalue.surgery2 = request.POST.get('surgery2')
+        getvalue.surgery3 = request.POST.get('surgery3')
+        getvalue.prescriptions = request.POST.get('prescriptions')
+        getvalue.tumortype = request.POST.get('tumortype')
+        result = connection.execute(
+            "select PatientID, pname, age, gender, diabetic ,bloodpressure "
+            ",heartdiseases , surgery1 , surgery2 , surgery3, prescriptions, imgPath,tumortype from patient")
+        return render(request, 'Search/search.html', {"result": result})
 
-
-    result = connection.execute(
-        "select PatientID, pname, age, gender, diabetic ,bloodpressure "
-        ",heartdiseases , surgery1 , surgery2 , surgery3, prescriptions, imgPath  from patient")
+    result = {}
+    if request.POST.get("t1"):
+        result= connection.execute(
+        "select PatientID, pname, age, gender,  diabetic  ,bloodpressure "
+        ",heartdiseases , surgery1 , surgery2 , surgery3, prescriptions, imgPath,  tumortype  from patient where tumortype='Meningioma'")
+    if request.POST.get("t2"):
+          result= connection.execute(
+        "select PatientID, pname, age, gender,  diabetic  ,bloodpressure "
+        ",heartdiseases , surgery1 , surgery2 , surgery3, prescriptions, imgPath,  tumortype  from patient where tumortype='Glioma'")
+    if request.POST.get("t3"):
+          result= connection.execute(
+        "select PatientID, pname, age, gender,  diabetic  ,bloodpressure "
+        ",heartdiseases , surgery1 , surgery2 , surgery3, prescriptions, imgPath,  tumortype  from patient where tumortype='ptitutary'")
+    if request.POST.get("t1") and request.POST.get("t2"):
+          result= connection.execute(
+        "select PatientID, pname, age, gender,  diabetic  ,bloodpressure "
+        ",heartdiseases , surgery1 , surgery2 , surgery3, prescriptions, imgPath,  tumortype  from patient where tumortype IN('Meningioma','Glioma')")
+    if request.POST.get("t1") and request.POST.get("t3"):
+          result= connection.execute(
+        "select PatientID, pname, age, gender,  diabetic  ,bloodpressure "
+        ",heartdiseases , surgery1 , surgery2 , surgery3, prescriptions, imgPath,  tumortype  from patient where tumortype IN('Meningioma','ptitutary')")
+    if request.POST.get("t2") and request.POST.get("t3"):
+          result= connection.execute(
+        "select PatientID, pname, age, gender,  diabetic  ,bloodpressure "
+        ",heartdiseases , surgery1 , surgery2 , surgery3, prescriptions, imgPath,  tumortype  from patient where tumortype IN('Glioma','ptitutary')")
+    if request.POST.get("t1") and request.POST.get("t2") and request.POST.get("t3"):
+          result= connection.execute(
+        "select PatientID, pname, age, gender,  diabetic  ,bloodpressure "
+        ",heartdiseases , surgery1 , surgery2 , surgery3, prescriptions, imgPath,  tumortype  from patient where tumortype IN('Meningioma','Glioma','ptitutary')")
     return render(request, 'Search/search.html', {"result": result})
 
 

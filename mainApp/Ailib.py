@@ -10,7 +10,6 @@ from keras.preprocessing import image
 from keras.applications.vgg16 import preprocess_input
 from keras.models import Model
 import tensorflow as tf
-
 tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 
 # loading Machine learning models
@@ -27,7 +26,6 @@ class config:
 
 class Predictions:
     """This class is specific to predicting tumors."""
-
 
     def biModelPrediction(image_path):
         image = cv2.imread(str(image_path))
