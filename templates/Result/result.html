@@ -1031,6 +1031,36 @@ h5{
     color: white;
     width: 100%;
 }
+#titletreat{
+margin-top: 50px;
+position: absolute;
+margin-left: 130px;
+font-size: 30px;
+font-weight: 700;
+}
+#treatsave{
+	margin-top: 50px;
+    position: absolute;
+    background-color: #fff;
+    border: none;
+    color: #3a9ecb;
+    padding: 8px 30px;
+    text-align: center;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-left: 10px;
+}
+#treatment{
+	margin-top: 50px;
+    width: 70%;
+    padding: 15px;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+    margin-bottom: 30px;
+    margin-left: 300px;
+}
 </style>
 </head>
 <body>
@@ -1042,7 +1072,13 @@ h5{
 			<div class="row">
 				<div class="col-xs-5 header-logo">
 					<br>
-					<a href="index.html"><img src="{ % static 'images/logo.png' %}" alt="" class="img-responsive logo"></a>
+					<a href="index.html"
+                    ><img
+                      src="{% static 'images/logo.png' %}"
+                      width="170px"
+                      alt=""
+                      class="img-responsive logo"
+                  /></a>
 				</div>
 
 				<div class="col-md-7">
@@ -1064,7 +1100,7 @@ h5{
 					      <ul class="nav navbar-nav navbar-right">
 					        <li><a class="menu" href="/Home" >Home</a></li>
 					        <li><a class="menu" href="#about">Predection</a></li>
-					        <li><a class="menu" href="#treatmentplane">Treatment plan </a></li>
+					        <li><a class="menu active" href="#treatmentplane">Treatment plan </a></li>
 					        <li><a class="menu" href="/Search">Search</a></li>
 					        <li><a class="menu" href="/New-Patiant"> Add New</a></li>
 							<li><a class="menu" href="/"> Log Out</a></li>
@@ -1118,12 +1154,16 @@ h5{
 			<div class="bg-holder" style="background-image:url(assets/img/gallery/bg-eye-care.png);background-position:center;background-size:contain;">
 			</div>
 			<!--/.bg-holder-->
-	
+			<form enctype="multipart/form-data" method="POST" action='/Home/' >
+				{% csrf_token %}
+        <p id="titletreat">Treatment Plane:</p>
+        <input type="text" id="treatment" name="treatmentplan" placeholder="write the suggested treatment plane..." size="15" required="">
+        <button id="treatsave" name ="treatment_btn">save</button>
+        	</form>
 			<div class="container">
 				<h2>similar Cases</h2>
 			  <div class="row align-items-center">
 				  {% if flag %}
-
 				<div class="col-md-5 col-xxl-6"><img class="img-fluid" src="{{similar_image.0}}" alt="..."  width="234" height="234"  /></div>
 				<div class="col-md-7 col-xxl-6 text-center text-md-start">
 
@@ -1375,6 +1415,7 @@ h5{
 													</div>
 													<br>
 			                                        <br>
+
 
 
 

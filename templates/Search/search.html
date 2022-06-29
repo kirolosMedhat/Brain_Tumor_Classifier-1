@@ -1217,6 +1217,19 @@ color: #737373;
     margin-left: 530px;
     margin-top: -57px;
 }
+#Treatment{
+    width:800%;
+    padding: 10px 0;
+    margin: 5px 0;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    color: rgb(11, 12, 12);
+    border-bottom: 1px solid rgba(97, 95, 95, 0.295);
+    outline: none;
+    background: transparent;
+    font-size: 18px;
+}
 
 </style>
 
@@ -1230,7 +1243,12 @@ color: #737373;
 			<div class="row">
 				<div class="col-xs-5 header-logo">
 					<br>
-					<a href="index.html"><img src=".\media\logo.png" alt="" class="img-responsive logo"></a>
+					<img
+                      src="{% static 'images/logo.png' %}"
+                      width="170px"
+                      alt=""
+                      class="img-responsive logo"
+                  /></a>
 				</div>
 
 				<div class="col-md-7">
@@ -1309,12 +1327,10 @@ color: #737373;
 						<th style="width:40%;">Diabetic</th>
 						<th style="width:40%;">BloodPressure</th>
 						<th style="width:40%;">HeartDiseased</th>
-						<th style="width:40%;">surgery_x</th>
-						<th style="width:40%;">surgery_y</th>
-						<th style="width:40%;">surgery_z</th>
 						<th style="width:40%;">prescriptions</th>
 						<th style="width:40%;">Image Path</th>
 						<th style="width:40%;">Tumor type</th>
+						<th style="width:40%;">Treatment Plan</th>
 					  </tr>
 
         </form>
@@ -1334,8 +1350,7 @@ color: #737373;
 						<td>{{row.8}}</td>
 						<td>{{row.9}}</td>
 						<td>{{row.10}}</td>
-						<td>{{row.11}}</td>
-						<td>{{row.12}}</td>
+
                     </tr>
                 {% endfor %}
             </tr>
@@ -1353,12 +1368,10 @@ color: #737373;
                 <div>diabetic:<input type="text" name="diabetic" id="diabetic" readonly> <br><br></div>
                 <div>BloodPressure:<input type="text" name="BloodPressure" id="BloodPressure" readonly> <br><br></div>
                 <div>HeartDiseased:<input type="text" name="HeartDiseased" id="HeartDiseased" readonly> <br><br></div>
-                <div>surgery(x):<input type="text" name="surgery(x)" id="surgery_x" readonly> <br><br></div>
-                <div>surgery(y):<input type="text" name="surgery(y)" id="surgery_y" readonly> <br><br></div>
-                <div>surgery(z):<input type="text" name="surgery(z)" id="surgery_z" readonly> <br><br></div>
                 <div>prescriptions:<input type="text" name="prescriptions" id="prescriptions" readonly> <br><br></div>
 				<div>Tumor:<input type="text" name="Tumor" id="Tumor" readonly> <br><br></div>
                 <div>Image:<img id="MRI" value="img" width="250" height="250"></div>
+				  <div>TreatmentPlan:<input type="text" name="Treatment" id="Treatment" readonly> <br><br></div>
                 </div>
 
 
@@ -1373,7 +1386,7 @@ color: #737373;
                     table.rows[i].onclick = function()
                     {
                         var val = document.getElementById('MRI').value;
-                        src= this.cells[11].innerHTML;
+                        src= this.cells[8].innerHTML;
                          src = src.substring(1);
                         MRI.src=src;
 
@@ -1386,11 +1399,9 @@ color: #737373;
                          document.getElementById("diabetic").value = this.cells[4].innerHTML;
 						 document.getElementById("BloodPressure").value = this.cells[5].innerHTML;
 						 document.getElementById("HeartDiseased").value = this.cells[6].innerHTML;
-						 document.getElementById("surgery_x").value = this.cells[7].innerHTML;
-						 document.getElementById("surgery_y").value = this.cells[8].innerHTML;
-						 document.getElementById("surgery_z").value = this.cells[9].innerHTML;
-						 document.getElementById("prescriptions").value = this.cells[10].innerHTML;
-						 document.getElementById("Tumor").value = this.cells[12].innerHTML;
+						 document.getElementById("prescriptions").value = this.cells[7].innerHTML;
+						 document.getElementById("Tumor").value = this.cells[9].innerHTML;
+						 document.getElementById("Treatment").value = this.cells[10].innerHTML;
                          document.getElementById("MRI").body.appendChild(MRI);
 
                     };

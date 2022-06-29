@@ -17,10 +17,13 @@ def Home(request):
     # load Home page
     if request.method == "GET":
         return render(request, 'Home/home.html')
+    # insert treatment plan
+    if "treatment_btn" in request.POST:
+        return Driver.treatmentPlan(request)
     # register after wrong login
     if 'signup' in request.POST:
         return Driver.Register(request)
-    # login
+    # normal login
     elif 'signin' in request.POST:
         return Driver.Login(request)
     return render(request, 'Login/index.html')
@@ -30,9 +33,8 @@ def Result(request):
     # load result page
     if request.method == 'GET':
         return render(request, 'Result/result.html')
-
     flag = False
-    context={'flag': flag}
+    context = {'flag': flag}
     # saving img
     fileObj = request.FILES['imgPath']
     fs = FileSystemStorage()
@@ -51,12 +53,12 @@ def Result(request):
         context.update(Driver.similar_cases(multi_prediction_txt, testimagepath))
         # insert new patient
     Driver.insertNewPatient(request, testimagepath, multi_prediction_txt)
-    context.update( {'testImgPath': testImgPath,
-               'bi_prediction': round(float(bi_prediction[0,1]) * 100, 3),
-               'multi_prediction': multi_prediction[0],
-               'multi_prediction_txt': multi_prediction_txt,
-               'flag': flag
-               })
+    context.update({'testImgPath': testImgPath,
+                    'bi_prediction': round(float(bi_prediction[0, 1]) * 100, 3),
+                    'multi_prediction': multi_prediction[0],
+                    'multi_prediction_txt': multi_prediction_txt,
+                    'flag': flag
+                    })
 
     return render(request, 'Result/result.html', context)
 
