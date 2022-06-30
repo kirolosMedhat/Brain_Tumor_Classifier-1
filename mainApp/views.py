@@ -68,4 +68,9 @@ def New(request):
 
 
 def Search(request):
+    if request.method == 'POST':
+        if "filter" in request.POST:
+            return Driver.Search(request)
+        return Driver.treatmentPlan(request)
+
     return Driver.Search(request)

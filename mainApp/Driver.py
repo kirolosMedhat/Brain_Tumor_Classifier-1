@@ -46,7 +46,9 @@ def Search(request):
             ",heartdiseases ,prescriptions, imgPath,tumortype, treatmentplan from patient")
         return render(request, 'Search/search.html', {"result": result})
 
-    result = {}
+    result = connection.execute(
+        "select PatientID, pname, age, gender, diabetic ,bloodpressure "
+        ",heartdiseases ,prescriptions, imgPath,tumortype, treatmentplan from patient")
     if request.POST.get("t1"):
         result = connection.execute(
             "select PatientID, pname, age, gender,  diabetic  ,bloodpressure "
@@ -79,13 +81,24 @@ def Search(request):
 
 
 def treatmentPlan(request):
-    connection.execute(
-        "update patient set treatmentplan = '" + request.POST.get("treatmentplan") + "' where patientID = "
-                                                                                     "(select MAX("
-                                                                                     "patientID)from "
-                                                                                     "patient);")
-    connection.commit()
-    return render(request, "Home/home.html")
+
+    if "save_btn" in request.POST:
+        connection.execute(
+            "update patient set treatmentplan = '" + request.POST.get("Treatment") + "' where patientID = ' "+request.POST.get("PatientId")+"';")
+        connection.commit()
+        result = connection.execute(
+            "select PatientID, pname, age, gender, diabetic ,bloodpressure "
+            ",heartdiseases ,prescriptions, imgPath,tumortype, treatmentplan from patient")
+        return render(request, 'Search/search.html', {"result": result})
+    else:
+        connection.execute(
+            "update patient set treatmentplan = '" + request.POST.get("treatmentplan") + "' where patientID = "
+                                                                                         "(select MAX("
+                                                                                         "patientID)from "
+                                                                                         "patient);")
+        connection.commit()
+        return render(request, "Home/home.html")
+
 
 
 def insertNewPatient(request, testimagepath, tumor_type):
