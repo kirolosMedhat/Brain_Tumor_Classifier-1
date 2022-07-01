@@ -30,10 +30,11 @@ def Home(request):
 
 
 def Result(request):
-    # load result page
+    # GET result page
     if request.method == 'GET':
         return render(request, 'Result/result.html')
-    flag = False
+    # if POST request
+    flag = False # default hide similar cases block
     context = {'flag': flag}
     # saving img
     fileObj = request.FILES['imgPath']
@@ -41,13 +42,14 @@ def Result(request):
     testImgPath = fs.save(fileObj.name, fileObj)
     testImgPath = fs.url(testImgPath)  # for server use
     testimagepath = '.' + testImgPath  # for pc
-    # start preditions
+    # start predictions
     bi_prediction = Predictions.biModelPrediction(testimagepath)
     # set default values
     multi_prediction = [0.00, 0.00, 0.00]
     multi_prediction_txt = "No tumor"
+    # if tumor exist
     if np.argmax(bi_prediction) == 1:
-        flag = True  # not finished yet
+        flag = True  # to show similar cases block
         multi_prediction = Predictions.multiModelPrediction(image_path=testimagepath)
         multi_prediction_txt = Predictions.multiModelTranslate(multi_prediction)
         context.update(Driver.similar_cases(multi_prediction_txt, testimagepath))
@@ -70,7 +72,9 @@ def New(request):
 def Search(request):
     if request.method == 'POST':
         if "filter" in request.POST:
+            # apply filter!
             return Driver.Search(request)
+        # update treatment plan for any patient
         return Driver.treatmentPlan(request)
-
+    # GET search page
     return Driver.Search(request)

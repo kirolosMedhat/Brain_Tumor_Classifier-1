@@ -123,7 +123,7 @@ class SearchImage:
         self.v = v  # Feature Vector
         self.n = n  # number of output
         u = AnnoyIndex(self.f, 'euclidean')
-        u.load(config.image_features_vectors_ann)  # super fast, will just mmap the file
+        u.load(config.image_features_vectors_ann)  # super-fast, will just mmap the file
         index_list = u.get_nns_by_vector(self.v, self.n)  # will find the 10 nearest neighbors
         return dict(zip(index_list, self.image_data.iloc[index_list]['images_paths'].to_list()))
 
