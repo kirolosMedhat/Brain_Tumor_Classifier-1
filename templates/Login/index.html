@@ -76,13 +76,14 @@
 				<button  name="signup">Sign Up</button>
 			</form>
 		</div>
-	
+
+
 		<div class="form-container sign-in-container">
 			<form  method="post" enctype="multipart/form-data" action='/Home/' >
 				{% csrf_token%}
 				<h1>Sign in</h1>
 				<input type="number" min="2" placeholder="ID"  name="auth_name" required/>
-				<input type="password" placeholder="Password"  name="pswd" required/>
+				<input id="id_password" type="password" placeholder="Password"  name="pswd" required/>
 				<button type="Submit" name="signin" >Sign In</button>
 				{% if id_alert %}
 				<div class="alert">
@@ -99,6 +100,7 @@
 			</form>
 
 		</div>
+
 
 		<div class="overlay-container">
 			<div class="overlay">
@@ -131,6 +133,14 @@
 		signInButton.addEventListener('click', () => {
 			container.classList.remove("right-panel-active");
 		});
+		const togglePassword = document.querySelector("#togglePassword");
+      const password = document.querySelector("#id_password");
+
+      togglePassword.addEventListener("click", function (e) {
+        const type =
+          password.getAttribute("type") === "password" ? "text" : "password";
+        password.setAttribute("type", type);
+      });
     </script>
 </body>
 </html>
