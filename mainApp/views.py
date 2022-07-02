@@ -48,7 +48,7 @@ def Result(request):
     multi_prediction = [0.00, 0.00, 0.00]
     multi_prediction_txt = "No tumor"
     # if tumor exist
-    if np.argmax(bi_prediction) == 1:
+    if np.argmax(bi_prediction) == 1 or bi_prediction[0, 1] > 0.002:
         flag = True  # to show similar cases block
         multi_prediction = Predictions.multiModelPrediction(image_path=testimagepath)
         multi_prediction_txt = Predictions.multiModelTranslate(multi_prediction)

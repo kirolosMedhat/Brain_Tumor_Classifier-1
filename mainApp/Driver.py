@@ -149,9 +149,7 @@ def similar_cases(tumor_type, testimagepath):
     image_list = []
     result.pop(0)  # pop the test image from dic.
     for item, key in zip(result, context):
-        context[key] = connection.execute("select PatientID, age, gender, diabetic, bloodpressure, heartdiseases, "
-                                          "prescriptions from patient Where imgPath = '" + result[
-                                              item] + "'").fetchone()
+        context[key] = connection.execute("select PatientID, age, gender, diabetic, bloodpressure, heartdiseases, prescriptions,treatmentplan from patient Where imgPath = '" + result[item] + "'").fetchone()
         image_list.append(result[item].lstrip("."))
 
     print(result)
