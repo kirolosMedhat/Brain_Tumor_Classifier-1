@@ -1,7 +1,7 @@
 # Tumor-x
-This project aims to detect and classify brain tumours using machine learning with an accuracy of 97.554% for detection and 95.3% for classification.
+This django project aims to detect and classify brain tumors using machine learning with an accuracy of 97.554% for detection and 95.3% for classification. then retrieve 5 similar cases
 
-Prediction:
+Prediction sample:
 
 ![unknown (2)](https://user-images.githubusercontent.com/76662331/179416394-c2d8273f-7866-4da8-b770-a69de9105b7a.png)
  
