@@ -1,7 +1,17 @@
 # Tumor-x
 This project aims to detect and classify brain tumours using machine learning with an accuracy of 97.554% for detection and 95.3% for classification.
 
+Prediction:
+
+![unknown (2)](https://user-images.githubusercontent.com/76662331/179416394-c2d8273f-7866-4da8-b770-a69de9105b7a.png)
+ 
+ Similar cases sample:
+ 
+ ![unknown (1)](https://user-images.githubusercontent.com/76662331/179416487-e7bcaaa3-da7d-4971-aa5c-ca28812a1bc4.png)
+
+
 # to install the required libiaries:
+
 
 pip install -r /path/to/requirements.txt
 
